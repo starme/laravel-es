@@ -1,6 +1,6 @@
 <?php
 
-namespace Starme\Laravel\Es;
+namespace Starme\LaravelEs;
 
 use Illuminate\Support\Arr;
 use InvalidArgumentException;

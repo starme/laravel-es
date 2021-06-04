@@ -1,6 +1,6 @@
 <?php
 
-namespace Starme\Laravel\Es;
+namespace Starme\LaravelEs;
 
 interface ConnectionResolverInterface
 {

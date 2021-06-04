@@ -1,5 +1,5 @@
 <?php
-namespace Starme\Laravel\Es;
+namespace Starme\LaravelEs;
 
 use Elasticsearch\ClientBuilder;
 use Psr\Log\LoggerInterface;

@@ -1,5 +1,5 @@
 <?php
-namespace Starme\Laravel\Es;
+namespace Starme\LaravelEs;
 
 use Closure;
 use Elasticsearch\Client;
