@@ -4,7 +4,7 @@ namespace Starme\Laravel\Es;
 use Illuminate\Support\ServiceProvider;
 use Starme\Laravel\Es\Eloquent\Model;
 
-class ElasticServiceProvider extends ServiceProvider
+class ElasticsearchServiceProvider extends ServiceProvider
 {
 
     /**
