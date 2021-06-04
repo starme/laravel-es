@@ -1,6 +1,6 @@
 <?php
 
-namespace Starme\Elasticsearch\Exceptions;
+namespace Starme\LaravelEs\Exceptions;
 
 use Throwable;
 

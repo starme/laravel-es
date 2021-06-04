@@ -1,5 +1,5 @@
 <?php
-namespace Starme\Elasticsearch\Query;
+namespace Starme\LaravelEs\Query;
 
 
 use Closure;
@@ -205,7 +205,7 @@ class Builder
     /**
      * Create a new query instance for nested where condition.
      *
-     * @return \Starme\Elasticsearch\Query\Builder
+     * @return \Starme\LaravelEs\Query\Builder
      */
     public function forNestedWhere(): Builder
     {
@@ -229,7 +229,7 @@ class Builder
     /**
      * Add another query builder as a nested where to the query builder.
      *
-     * @param \Starme\Elasticsearch\Query\Builder $query
+     * @param \Starme\LaravelEs\Query\Builder $query
      * @param $boolean
      * @return $this
      */
@@ -677,7 +677,7 @@ class Builder
      *
      * @param string $scroll
      * @param string $scroll_id
-     * @return \Starme\Elasticsearch\Query\Builder
+     * @return \Starme\LaravelEs\Query\Builder
      */
     public function scroll(string $scroll, $scroll_id=''): Builder
     {
@@ -762,7 +762,7 @@ class Builder
     /**
      * Get a new instance of the query builder.
      *
-     * @return \Starme\Elasticsearch\Query\Builder
+     * @return \Starme\LaravelEs\Query\Builder
      */
     public function newQuery(): Builder
     {

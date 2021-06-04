@@ -1,11 +1,11 @@
 <?php
-namespace Starme\Elasticsearch;
+namespace Starme\Laravel\Es;
 
 use Elasticsearch\ClientBuilder;
 use Psr\Log\LoggerInterface;
-use Starme\Elasticsearch\Query\Builder as QueryBuilder;
-use Starme\Elasticsearch\Query\Grammar as QueryGrammar;
-use Starme\Elasticsearch\Schema\Builder as SchemaBuilder;
+use Starme\Laravel\Es\Query\Builder as QueryBuilder;
+use Starme\Laravel\Es\Query\Grammar as QueryGrammar;
+use Starme\Laravel\Es\Schema\Builder as SchemaBuilder;
 
 interface ConnectionInterface
 {
@@ -34,7 +34,7 @@ interface ConnectionInterface
     /**
      * Get a schema builder instance for the connection.
      *
-     * @return \Starme\ElasticSearch\Schema\Builder
+     * @return \Starme\Laravel\Es\Schema\Builder
      */
 //    public function getSchemaBuilder()
 //    {
@@ -49,14 +49,14 @@ interface ConnectionInterface
      * Get a schema builder instance for the connection.
      *
      * @param $table
-     * @return \Starme\Elasticsearch\Query\Builder
+     * @return \Starme\Laravel\Es\Query\Builder
      */
     public function table($table): QueryBuilder;
 
     /**
      * Get a new query builder instance.
      *
-     * @return \Starme\Elasticsearch\Query\Builder
+     * @return \Starme\Laravel\Es\Query\Builder
      */
     public function query(): QueryBuilder;
 
@@ -64,7 +64,7 @@ interface ConnectionInterface
      * Run a select statement against the elasticsearch.
      *
      * @params array $params
-     * @throws \Starme\Elasticsearch\Exceptions\QueryException
+     * @throws \Starme\Laravel\Es\Exceptions\QueryException
      */
     public function select(array $params);
 
@@ -72,7 +72,7 @@ interface ConnectionInterface
      * Run a insert statement against the elasticsearch.
      *
      * @params array $params
-     * @throws \Starme\Elasticsearch\Exceptions\QueryException
+     * @throws \Starme\Laravel\Es\Exceptions\QueryException
      */
     public function insert(array $params);
 
@@ -80,7 +80,7 @@ interface ConnectionInterface
      * Run a update statement against the elasticsearch.
      *
      * @params array $params
-     * @throws \Starme\Elasticsearch\Exceptions\QueryException
+     * @throws \Starme\Laravel\Es\Exceptions\QueryException
      */
     public function update(array $params, $by_query=false);
 
@@ -88,7 +88,7 @@ interface ConnectionInterface
      * Run a delete statement against the elasticsearch.
      *
      * @params array $params
-     * @throws \Starme\Elasticsearch\Exceptions\QueryException
+     * @throws \Starme\Laravel\Es\Exceptions\QueryException
      */
     public function delete(array $params);
 

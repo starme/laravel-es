@@ -1,6 +1,6 @@
 <?php
 
-namespace Starme\Elasticsearch\Schema;
+namespace Starme\LaravelEs\Schema;
 
 use Illuminate\Support\Fluent;
 

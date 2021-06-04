@@ -1,6 +1,6 @@
 <?php
 
-namespace Starme\Elasticsearch\Eloquent\Concerns;
+namespace Starme\Laravel\Es\Eloquent\Concerns;
 
 trait HasAttributes
 {

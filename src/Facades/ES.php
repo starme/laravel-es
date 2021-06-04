@@ -1,6 +1,6 @@
 <?php
 
-namespace Starme\Elasticsearch\Facades;
+namespace Starme\LaravelEs\Facades;
 
 use Illuminate\Support\Facades\Facade;
 
@@ -14,8 +14,8 @@ use Illuminate\Support\Facades\Facade;
  * @method static void listen(\Closure $callback)
  * @method static void setDefaultConnection(string $name)
  *
- * @see \Starme\Elasticsearch\ConnectionResolver
- * @see \Starme\Elasticsearch\Connection
+ * @see \Starme\LaravelEs\ConnectionResolver
+ * @see \Starme\LaravelEs\Connection
  */
 class ES extends Facade
 {

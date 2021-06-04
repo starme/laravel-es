@@ -1,5 +1,5 @@
 <?php
-namespace Starme\Elasticsearch\Events;
+namespace Starme\Laravel\Es\Events;
 
 class QueryExecuted
 {
@@ -23,7 +23,7 @@ class QueryExecuted
     /**
      * The database connection instance.
      *
-     * @var \Starme\Elasticsearch\Connection
+     * @var \Starme\Laravel\Es\Connection
      */
     public $connection;
 

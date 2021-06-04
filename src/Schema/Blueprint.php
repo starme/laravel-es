@@ -1,6 +1,6 @@
 <?php
 
-namespace Starme\Elasticsearch\Schema;
+namespace Starme\LaravelEs\Schema;
 
 use Closure;
 use Illuminate\Support\Fluent;
@@ -151,7 +151,7 @@ class Blueprint
      * Create a new string column on the table.
      *
      * @param string $column
-     * @return \Starme\Elasticsearch\Schema\ColumnDefinition
+     * @return \Starme\LaravelEs\Schema\ColumnDefinition
      */
     public function string(string $column): ColumnDefinition
     {
@@ -162,7 +162,7 @@ class Blueprint
      * Create a new text column on the table.
      *
      * @param string $column
-     * @return \Starme\Elasticsearch\Schema\ColumnDefinition
+     * @return \Starme\LaravelEs\Schema\ColumnDefinition
      */
     public function text(string $column): ColumnDefinition
     {
@@ -173,7 +173,7 @@ class Blueprint
      * Create a new tiny integer (1-byte) column on the table.
      *
      * @param string $column
-     * @return \Starme\Elasticsearch\Schema\ColumnDefinition
+     * @return \Starme\LaravelEs\Schema\ColumnDefinition
      */
     public function tinyInteger(string $column): ColumnDefinition
     {
@@ -184,7 +184,7 @@ class Blueprint
      * Create a new small integer (2-byte) column on the table.
      *
      * @param string $column
-     * @return \Starme\Elasticsearch\Schema\ColumnDefinition
+     * @return \Starme\LaravelEs\Schema\ColumnDefinition
      */
     public function smallInteger(string $column): ColumnDefinition
     {
@@ -195,7 +195,7 @@ class Blueprint
      * Create a new integer (4-byte) column on the table.
      *
      * @param string $column
-     * @return \Starme\Elasticsearch\Schema\ColumnDefinition
+     * @return \Starme\LaravelEs\Schema\ColumnDefinition
      */
     public function integer(string $column): ColumnDefinition
     {
@@ -206,7 +206,7 @@ class Blueprint
      * Create a new big integer (8-byte) column on the table.
      *
      * @param string $column
-     * @return \Starme\Elasticsearch\Schema\ColumnDefinition
+     * @return \Starme\LaravelEs\Schema\ColumnDefinition
      */
     public function bigInteger(string $column): ColumnDefinition
     {
@@ -217,7 +217,7 @@ class Blueprint
      * Create a new float column on the table.
      *
      * @param string $column
-     * @return \Starme\Elasticsearch\Schema\ColumnDefinition
+     * @return \Starme\LaravelEs\Schema\ColumnDefinition
      */
     public function float(string $column): ColumnDefinition
     {
@@ -228,7 +228,7 @@ class Blueprint
      * Create a new double column on the table.
      *
      * @param string $column
-     * @return \Starme\Elasticsearch\Schema\ColumnDefinition
+     * @return \Starme\LaravelEs\Schema\ColumnDefinition
      */
     public function double(string $column): ColumnDefinition
     {
@@ -239,7 +239,7 @@ class Blueprint
      * Create a new boolean column on the table.
      *
      * @param string $column
-     * @return \Starme\Elasticsearch\Schema\ColumnDefinition
+     * @return \Starme\LaravelEs\Schema\ColumnDefinition
      */
     public function boolean(string $column): ColumnDefinition
     {
@@ -250,7 +250,7 @@ class Blueprint
      * Create a new date column on the table.
      *
      * @param string $column
-     * @return \Starme\Elasticsearch\Schema\ColumnDefinition
+     * @return \Starme\LaravelEs\Schema\ColumnDefinition
      */
     public function date(string $column): ColumnDefinition
     {
@@ -261,7 +261,7 @@ class Blueprint
      * Create a new binary column on the table.
      *
      * @param string $column
-     * @return \Starme\Elasticsearch\Schema\ColumnDefinition
+     * @return \Starme\LaravelEs\Schema\ColumnDefinition
      */
     public function binary(string $column): ColumnDefinition
     {
@@ -272,7 +272,7 @@ class Blueprint
      * Create a new array column on the table.
      *
      * @param string $column
-     * @return \Starme\Elasticsearch\Schema\ColumnDefinition
+     * @return \Starme\LaravelEs\Schema\ColumnDefinition
      */
     public function array(string $column): ColumnDefinition
     {
@@ -283,7 +283,7 @@ class Blueprint
      * Create a new object column on the table.
      *
      * @param string $column
-     * @return \Starme\Elasticsearch\Schema\ColumnDefinition
+     * @return \Starme\LaravelEs\Schema\ColumnDefinition
      */
     public function object(string $column): ColumnDefinition
     {
@@ -296,7 +296,7 @@ class Blueprint
      * @param string $type
      * @param string $name
      * @param array $parameters
-     * @return \Starme\Elasticsearch\Schema\ColumnDefinition
+     * @return \Starme\LaravelEs\Schema\ColumnDefinition
      */
     public function addColumn(string $type, string $name, array $parameters = []): ColumnDefinition
     {
@@ -360,7 +360,7 @@ class Blueprint
     /**
      * Get the columns on the blueprint.
      *
-     * @return \Starme\Elasticsearch\Schema\ColumnDefinition[]
+     * @return \Starme\LaravelEs\Schema\ColumnDefinition[]
      */
     public function getColumns(): array
     {

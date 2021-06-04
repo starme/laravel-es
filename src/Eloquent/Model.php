@@ -1,13 +1,13 @@
 <?php
-namespace Starme\Elasticsearch\Eloquent;
+namespace Starme\Laravel\Es\Eloquent;
 
 use ArrayAccess;
 use Illuminate\Support\Str;
 use Illuminate\Support\Traits\ForwardsCalls;
 use JsonSerializable;
-use Starme\Elasticsearch\Connection;
-use Starme\Elasticsearch\ConnectionResolverInterface as Resolver;
-use Starme\Elasticsearch\Query\Builder;
+use Starme\Laravel\Es\Connection;
+use Starme\Laravel\Es\ConnectionResolverInterface as Resolver;
+use Starme\Laravel\Es\Query\Builder;
 
 abstract class Model implements ArrayAccess, JsonSerializable
 {
@@ -31,7 +31,7 @@ abstract class Model implements ArrayAccess, JsonSerializable
     /**
      * The connection resolver instance.
      *
-     * @var \Starme\Elasticsearch\ConnectionResolverInterface
+     * @var \Starme\Laravel\Es\ConnectionResolverInterface
      */
     protected static $resolver;
 
@@ -183,7 +183,7 @@ abstract class Model implements ArrayAccess, JsonSerializable
     /**
      * Get the database connection for the model.
      *
-     * @return \Starme\Elasticsearch\Connection
+     * @return \Starme\Laravel\Es\Connection
      */
     public function getConnection(): Connection
     {
@@ -204,7 +204,7 @@ abstract class Model implements ArrayAccess, JsonSerializable
      * Set the connection associated with the model.
      *
      * @param string|null $name
-     * @return \Starme\Elasticsearch\Eloquent\Model
+     * @return \Starme\Laravel\Es\Eloquent\Model
      */
     public function setConnection(?string $name): Model
     {
@@ -217,7 +217,7 @@ abstract class Model implements ArrayAccess, JsonSerializable
      * Resolve a connection instance.
      *
      * @param  string|null  $connection
-     * @return \Starme\Elasticsearch\Connection
+     * @return \Starme\Laravel\Es\Connection
      */
     public static function resolveConnection($connection = null): Connection
     {
@@ -227,7 +227,7 @@ abstract class Model implements ArrayAccess, JsonSerializable
     /**
      * Get the connection resolver instance.
      *
-     * @return \Starme\Elasticsearch\ConnectionResolverInterface
+     * @return \Starme\Laravel\Es\ConnectionResolverInterface
      */
     public static function getConnectionResolver(): Resolver
     {
@@ -237,7 +237,7 @@ abstract class Model implements ArrayAccess, JsonSerializable
     /**
      * Set the connection resolver instance.
      *
-     * @param  \Starme\Elasticsearch\ConnectionResolverInterface  $resolver
+     * @param  \Starme\Laravel\Es\ConnectionResolverInterface  $resolver
      * @return void
      */
     public static function setConnectionResolver(Resolver $resolver)
@@ -258,7 +258,7 @@ abstract class Model implements ArrayAccess, JsonSerializable
     /**
      * Get a new query builder for the model's table.
      *
-     * @return \Starme\Elasticsearch\Query\Builder
+     * @return \Starme\Laravel\Es\Query\Builder
      */
     public function newQuery(): Builder
     {

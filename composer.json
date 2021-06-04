@@ -19,14 +19,14 @@
     ],
     "autoload": {
         "psr-4": {
-            "Starme\\Elasticsearch\\": "src/"
+            "Starme\\LaravelEs\\": "src/"
         },
         "files": [
         ]
     },
     "autoload-dev": {
         "psr-4": {
-            "Starme\\Elasticsearch\\Tests\\": "tests/"
+            "Starme\\LaravelEs\\Tests\\": "tests/"
         }
     },
     "require": {
@@ -43,11 +43,11 @@
     "extra": {
         "laravel": {
             "providers": [
-                "Starme\\Elasticsearch\\ElasticsearchServiceProvider"
+                "Starme\\LaravelEs\\ElasticsearchServiceProvider"
             ],
             "facades": {
-                "ES": "Starme\\Elasticsearch\\Facades\\ES",
-                "Index": "Starme\\Elasticsearch\\Facades\\Index"
+                "ES": "Starme\\LaravelEs\\Facades\\ES",
+                "Index": "Starme\\LaravelEs\\Facades\\Index"
             }
         }
     },

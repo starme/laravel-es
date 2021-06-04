@@ -1,9 +1,9 @@
 <?php
-namespace Starme\Elasticsearch\Schema;
+namespace Starme\LaravelEs\Schema;
 
 
 use Closure;
-use Starme\Elasticsearch\Connection;
+use Starme\LaravelEs\Connection;
 
 class Builder
 {
@@ -13,14 +13,14 @@ class Builder
     /**
      * The database connection instance.
      *
-     * @var \Starme\Elasticsearch\Connection
+     * @var \Starme\LaravelEs\Connection
      */
     protected $connection;
 
     /**
      * The schema grammar instance.
      *
-     * @var \Starme\Elasticsearch\Schema\Grammar
+     * @var \Starme\LaravelEs\Schema\Grammar
      */
     protected $grammar;
 
@@ -34,7 +34,7 @@ class Builder
     /**
      * Create a new database Schema manager.
      *
-     * @param \Starme\Elasticsearch\Connection $connection
+     * @param \Starme\LaravelEs\Connection $connection
      */
     public function __construct(Connection $connection)
     {
@@ -87,7 +87,7 @@ class Builder
     /**
      * Execute the blueprint to build / modify the table.
      *
-     * @param \Starme\Elasticsearch\Schema\Blueprint $blueprint
+     * @param \Starme\LaravelEs\Schema\Blueprint $blueprint
      * @return array
      */
     protected function build(Blueprint $blueprint): array
@@ -100,7 +100,7 @@ class Builder
      *
      * @param string $table
      * @param  \Closure|null  $callback
-     * @return \Starme\Elasticsearch\Schema\Blueprint
+     * @return \Starme\LaravelEs\Schema\Blueprint
      */
     protected function createBlueprint(string $table, Closure $callback = null): Blueprint
     {
@@ -118,7 +118,7 @@ class Builder
     /**
      * Get the database connection instance.
      *
-     * @return \Starme\Elasticsearch\Connection
+     * @return \Starme\LaravelEs\Connection
      */
     public function getConnection(): Connection
     {
@@ -128,7 +128,7 @@ class Builder
     /**
      * Set the database connection instance.
      *
-     * @param \Starme\Elasticsearch\Connection $connection
+     * @param \Starme\LaravelEs\Connection $connection
      * @return $this
      */
     public function setConnection(Connection $connection): Builder

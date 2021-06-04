@@ -1,5 +1,5 @@
 <?php
-namespace Starme\Elasticsearch\Query;
+namespace Starme\LaravelEs\Query;
 
 
 class Grammar
@@ -50,7 +50,7 @@ class Grammar
     /**
      * Compile the components necessary for a select clause.
      *
-     * @param \Starme\Elasticsearch\Query\Builder $query
+     * @param \Starme\LaravelEs\Query\Builder $query
      * @return array
      */
     protected function compileComponents(Builder $query): array
@@ -76,7 +76,7 @@ class Grammar
     /**
      * Compile the "select *" portion of the query.
      *
-     * @param \Starme\Elasticsearch\Query\Builder $query
+     * @param \Starme\LaravelEs\Query\Builder $query
      * @param array $columns
      * @return array
      */
@@ -88,7 +88,7 @@ class Grammar
     /**
      * Compile the "from" portion of the query.
      *
-     * @param \Starme\Elasticsearch\Query\Builder $query
+     * @param \Starme\LaravelEs\Query\Builder $query
      * @param string $index
      * @return array
      */
@@ -101,7 +101,7 @@ class Grammar
     /**
      * Compile the "from" portion of the query.
      *
-     * @param \Starme\Elasticsearch\Query\Builder $query
+     * @param \Starme\LaravelEs\Query\Builder $query
      * @param string $type
      * @return array
      */
@@ -114,7 +114,7 @@ class Grammar
     /**
      * Compile the "select *" portion of the query.
      *
-     * @param \Starme\Elasticsearch\Query\Builder $query
+     * @param \Starme\LaravelEs\Query\Builder $query
      * @param array $scroll
      * @return array
      */
@@ -131,7 +131,7 @@ class Grammar
     /**
      * Compile the "where" portions of the query.
      *
-     * @param \Starme\Elasticsearch\Query\Builder $query
+     * @param \Starme\LaravelEs\Query\Builder $query
      * @return array
      */
     public function compileWheres(Builder $query): array
@@ -149,7 +149,7 @@ class Grammar
     /**
      * Get an array of all the where clauses for the query.
      *
-     * @param \Starme\Elasticsearch\Query\Builder $query
+     * @param \Starme\LaravelEs\Query\Builder $query
      * @return array
      */
     protected function compileWheresToArray(Builder $query): array
@@ -160,7 +160,7 @@ class Grammar
     }
 
     /**
-     * @param \Starme\Elasticsearch\Query\Builder $query
+     * @param \Starme\LaravelEs\Query\Builder $query
      * @param array $where
      * @return array
      */
@@ -174,7 +174,7 @@ class Grammar
     }
 
     /**
-     * @param \Starme\Elasticsearch\Query\Builder $query
+     * @param \Starme\LaravelEs\Query\Builder $query
      * @param array $where
      * @return array
      */
@@ -186,7 +186,7 @@ class Grammar
     }
 
     /**
-     * @param \Starme\Elasticsearch\Query\Builder $query
+     * @param \Starme\LaravelEs\Query\Builder $query
      * @param array $where
      * @return array
      */
@@ -303,7 +303,7 @@ class Grammar
     /**
      * Compile the "order by" portions of the query.
      *
-     * @param \Starme\Elasticsearch\Query\Builder $query
+     * @param \Starme\LaravelEs\Query\Builder $query
      * @param array $sort
      * @return array
      */
@@ -319,7 +319,7 @@ class Grammar
     /**
      * Compile the query orders to an array.
      *
-     * @param \Starme\Elasticsearch\Query\Builder $query
+     * @param \Starme\LaravelEs\Query\Builder $query
      * @param array $orders
      * @return array
      */
@@ -333,7 +333,7 @@ class Grammar
     /**
      * Compile the "limit" portions of the query.
      *
-     * @param \Starme\Elasticsearch\Query\Builder $query
+     * @param \Starme\LaravelEs\Query\Builder $query
      * @param int $limit
      * @return array
      */
@@ -345,7 +345,7 @@ class Grammar
     /**
      * Compile the "offset" portions of the query.
      *
-     * @param \Starme\Elasticsearch\Query\Builder $query
+     * @param \Starme\LaravelEs\Query\Builder $query
      * @param int $offset
      * @return array
      */
@@ -357,7 +357,7 @@ class Grammar
     /**
      * Compile an insert statement into SQL.
      *
-     * @param \Starme\Elasticsearch\Query\Builder $query
+     * @param \Starme\LaravelEs\Query\Builder $query
      * @param array $values
      * @return array
      */
@@ -369,7 +369,7 @@ class Grammar
     /**
      * Compile an update statement into SQL.
      *
-     * @param \Starme\Elasticsearch\Query\Builder $query
+     * @param \Starme\LaravelEs\Query\Builder $query
      * @param array $values
      * @return array
      */
@@ -387,7 +387,7 @@ class Grammar
     /**
      * Compile an update statement into SQL.
      *
-     * @param \Starme\Elasticsearch\Query\Builder $query
+     * @param \Starme\LaravelEs\Query\Builder $query
      * @param array $values
      * @param array $upsert
      * @return array

@@ -1,5 +1,5 @@
 <?php
-namespace Starme\Elasticsearch\Schema\Concerns;
+namespace Starme\LaravelEs\Schema\Concerns;
 
 use Closure;
 

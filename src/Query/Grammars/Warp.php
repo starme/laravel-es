@@ -1,5 +1,5 @@
 <?php
-namespace Starme\Elasticsearch\Query\Grammars;
+namespace Starme\LaravelEs\Query\Grammars;
 
 
 trait Warp

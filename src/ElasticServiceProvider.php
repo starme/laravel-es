@@ -1,8 +1,8 @@
 <?php
-namespace Starme\Elasticsearch;
+namespace Starme\Laravel\Es;
 
 use Illuminate\Support\ServiceProvider;
-use Starme\Elasticsearch\Eloquent\Model;
+use Starme\Laravel\Es\Eloquent\Model;
 
 class ElasticServiceProvider extends ServiceProvider
 {

@@ -2,7 +2,7 @@
 
 namespace Tests\Elasticsearch;
 
-use Starme\Elasticsearch\Eloquent\Model;
+use Starme\LaravelEs\Eloquent\Model;
 use Tests\TestCase;
 
 

@@ -1,7 +1,7 @@
 <?php
-namespace Starme\Elasticsearch\Query\Grammars;
+namespace Starme\LaravelEs\Query\Grammars;
 
-use Starme\Elasticsearch\Query\Builder;
+use Starme\LaravelEs\Query\Builder;
 
 trait AggregationGrammar
 {
