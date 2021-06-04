@@ -8,7 +8,7 @@ interface ConnectionResolverInterface
      * Get a database connection instance.
      *
      * @param  string|null  $name
-     * @return \Starme\Laravel\Es\ConnectionInterface
+     * @return \Starme\LaravelEs\ConnectionInterface
      */
     public function connection($name = null): ConnectionInterface;
 

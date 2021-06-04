@@ -39,7 +39,7 @@ class ConnectionResolver implements ConnectionResolverInterface
      * Get a database connection instance.
      *
      * @param  string|null  $name
-     * @return \Starme\Laravel\Es\ConnectionInterface
+     * @return \Starme\LaravelEs\ConnectionInterface
      */
     public function connection($name = null): ConnectionInterface
     {
@@ -60,7 +60,7 @@ class ConnectionResolver implements ConnectionResolverInterface
      * Add a connection to the resolver.
      *
      * @param string $name
-     * @param \Starme\Laravel\Es\ConnectionInterface $connection
+     * @param \Starme\LaravelEs\ConnectionInterface $connection
      * @return void
      */
     public function addConnection(string $name, ConnectionInterface $connection)
@@ -96,7 +96,7 @@ class ConnectionResolver implements ConnectionResolverInterface
      * Reconnect to the given database.
      *
      * @param  string|null  $name
-     * @return \Starme\Laravel\Es\ConnectionInterface
+     * @return \Starme\LaravelEs\ConnectionInterface
      */
     public function reconnect($name = null): ConnectionInterface
     {
@@ -113,7 +113,7 @@ class ConnectionResolver implements ConnectionResolverInterface
      * Refresh the PDO connections on a given connection.
      *
      * @param string $name
-     * @return \Starme\Laravel\Es\Connection
+     * @return \Starme\LaravelEs\Connection
      */
     protected function refreshConnections(string $name): Connection
     {
@@ -147,7 +147,7 @@ class ConnectionResolver implements ConnectionResolverInterface
      * Make the database connection instance.
      *
      * @param string $name
-     * @return \Starme\Laravel\Es\Connection
+     * @return \Starme\LaravelEs\Connection
      */
     protected function makeConnection(string $name): Connection
     {
@@ -187,9 +187,9 @@ class ConnectionResolver implements ConnectionResolverInterface
     /**
      * Prepare the database connection instance.
      *
-     * @param \Starme\Laravel\Es\Connection $connection
+     * @param \Starme\LaravelEs\Connection $connection
      * @param string $type
-     * @return \Starme\Laravel\Es\Connection
+     * @return \Starme\LaravelEs\Connection
      */
     protected function configure(Connection $connection, string $type): Connection
     {

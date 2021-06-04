@@ -7,10 +7,10 @@ use Elasticsearch\ClientBuilder;
 use Exception;
 use LogicException;
 use Psr\Log\LoggerInterface;
-use Starme\Laravel\Es\Query\Builder as QueryBuilder;
-use Starme\Laravel\Es\Query\Grammar as QueryGrammar;
-use Starme\Laravel\Es\Schema\Builder as SchemaBuilder;
-use Starme\Laravel\Es\Schema\Grammar as SchemaGrammar;
+use Starme\LaravelEs\Query\Builder as QueryBuilder;
+use Starme\LaravelEs\Query\Grammar as QueryGrammar;
+use Starme\LaravelEs\Schema\Builder as SchemaBuilder;
+use Starme\LaravelEs\Schema\Grammar as SchemaGrammar;
 
 class Connection implements ConnectionInterface
 {
@@ -67,12 +67,12 @@ class Connection implements ConnectionInterface
     protected $reconnector;
 
     /**
-     * @var \Starme\Laravel\Es\Query\Grammar
+     * @var \Starme\LaravelEs\Query\Grammar
      */
     protected $queryGrammar;
 
     /**
-     * @var \Starme\Laravel\Es\Schema\Grammar
+     * @var \Starme\LaravelEs\Schema\Grammar
      */
     protected $schemaGrammar;
 
@@ -129,7 +129,7 @@ class Connection implements ConnectionInterface
     /**
      * Get the default query grammar instance.
      *
-     * @return \Starme\Laravel\Es\Query\Grammar
+     * @return \Starme\LaravelEs\Query\Grammar
      */
     protected function getDefaultQueryGrammar(): QueryGrammar
     {
@@ -150,7 +150,7 @@ class Connection implements ConnectionInterface
     /**
      * Get the default query grammar instance.
      *
-     * @return \Starme\Laravel\Es\Schema\Grammar
+     * @return \Starme\LaravelEs\Schema\Grammar
      */
     protected function getDefaultSchemaGrammar(): SchemaGrammar
     {
@@ -160,7 +160,7 @@ class Connection implements ConnectionInterface
     /**
      * Get a schema builder instance for the connection.
      *
-     * @return \Starme\Laravel\Es\Schema\Builder
+     * @return \Starme\LaravelEs\Schema\Builder
      */
     public function schema(): SchemaBuilder
     {
@@ -175,7 +175,7 @@ class Connection implements ConnectionInterface
      * Get a schema builder instance for the connection.
      *
      * @param $table
-     * @return \Starme\Laravel\Es\Query\Builder
+     * @return \Starme\LaravelEs\Query\Builder
      */
     public function table($table): QueryBuilder
     {
@@ -185,7 +185,7 @@ class Connection implements ConnectionInterface
     /**
      * Get a new query builder instance.
      *
-     * @return \Starme\Laravel\Es\Query\Builder
+     * @return \Starme\LaravelEs\Query\Builder
      */
     public function query(): QueryBuilder
     {
@@ -196,7 +196,7 @@ class Connection implements ConnectionInterface
      * Run a select statement against the elasticsearch.
      *
      * @params array $body
-     * @throws \Starme\Laravel\Es\Exceptions\QueryException
+     * @throws \Starme\LaravelEs\Exceptions\QueryException
      */
     public function select(array $params)
     {
@@ -210,7 +210,7 @@ class Connection implements ConnectionInterface
      * Run an insert statement against the elasticsearch.
      *
      * @params array $params
-     * @throws \Starme\Laravel\Es\Exceptions\QueryException
+     * @throws \Starme\LaravelEs\Exceptions\QueryException
      */
     public function insert($params)
     {
@@ -221,7 +221,7 @@ class Connection implements ConnectionInterface
      * Run an update statement against the elasticsearch.
      *
      * @params array $params
-     * @throws \Starme\Laravel\Es\Exceptions\QueryException
+     * @throws \Starme\LaravelEs\Exceptions\QueryException
      */
     public function update($params, $by_query=false)
     {
@@ -239,7 +239,7 @@ class Connection implements ConnectionInterface
      * Run an delete statement against the elasticsearch.
      *
      * @params array $params
-     * @throws \Starme\Laravel\Es\Exceptions\QueryException
+     * @throws \Starme\LaravelEs\Exceptions\QueryException
      */
     public function delete($params)
     {
@@ -251,7 +251,7 @@ class Connection implements ConnectionInterface
      *
      * @params string $type
      * @params array $params
-     * @throws \Starme\Laravel\Es\Exceptions\QueryException
+     * @throws \Starme\LaravelEs\Exceptions\QueryException
      */
     public function template(string $type, array $params)
     {
@@ -265,7 +265,7 @@ class Connection implements ConnectionInterface
      *
      * @params string $type
      * @params array $params
-     * @throws \Starme\Laravel\Es\Exceptions\QueryException
+     * @throws \Starme\LaravelEs\Exceptions\QueryException
      */
     public function alias(string $type, array $params)
     {
@@ -282,7 +282,7 @@ class Connection implements ConnectionInterface
      * @param \Closure|null $callback
      * @return mixed
      *
-     * @throws \Starme\Laravel\Es\Exceptions\QueryException
+     * @throws \Starme\LaravelEs\Exceptions\QueryException
      */
     protected function run(string $method, array $queries, Closure $callback = null)
     {
@@ -323,7 +323,7 @@ class Connection implements ConnectionInterface
      * @param \Closure $callback
      * @return mixed
      *
-     * @throws \Starme\Laravel\Es\Exceptions\QueryException
+     * @throws \Starme\LaravelEs\Exceptions\QueryException
      */
     protected function runQueryCallback(string $method, array $queries, Closure $callback)
     {
@@ -441,7 +441,7 @@ class Connection implements ConnectionInterface
     /**
      * Get the query grammar used by the connection.
      *
-     * @return \Starme\Laravel\Es\Query\Grammar
+     * @return \Starme\LaravelEs\Query\Grammar
      */
     public function getQueryGrammar(): QueryGrammar
     {
@@ -451,7 +451,7 @@ class Connection implements ConnectionInterface
     /**
      * Get the schema grammar used by the connection.
      *
-     * @return \Starme\Laravel\Es\Schema\Grammar
+     * @return \Starme\LaravelEs\Schema\Grammar
      */
     public function getSchemaGrammar(): SchemaGrammar
     {
@@ -483,7 +483,7 @@ class Connection implements ConnectionInterface
      * Set the table prefix in use by the connection.
      *
      * @param string $prefix
-     * @return \Starme\Laravel\Es\Connection
+     * @return \Starme\LaravelEs\Connection
      */
     public function setTablePrefix(string $prefix): Connection
     {

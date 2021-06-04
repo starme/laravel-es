@@ -1,13 +1,13 @@
 <?php
-namespace Starme\Laravel\Es\Eloquent;
+namespace Starme\LaravelEs\Eloquent;
 
 use ArrayAccess;
 use Illuminate\Support\Str;
 use Illuminate\Support\Traits\ForwardsCalls;
 use JsonSerializable;
-use Starme\Laravel\Es\Connection;
-use Starme\Laravel\Es\ConnectionResolverInterface as Resolver;
-use Starme\Laravel\Es\Query\Builder;
+use Starme\LaravelEs\Connection;
+use Starme\LaravelEs\ConnectionResolverInterface as Resolver;
+use Starme\LaravelEs\Query\Builder;
 
 abstract class Model implements ArrayAccess, JsonSerializable
 {
@@ -31,7 +31,7 @@ abstract class Model implements ArrayAccess, JsonSerializable
     /**
      * The connection resolver instance.
      *
-     * @var \Starme\Laravel\Es\ConnectionResolverInterface
+     * @var \Starme\LaravelEs\ConnectionResolverInterface
      */
     protected static $resolver;
 
@@ -183,7 +183,7 @@ abstract class Model implements ArrayAccess, JsonSerializable
     /**
      * Get the database connection for the model.
      *
-     * @return \Starme\Laravel\Es\Connection
+     * @return \Starme\LaravelEs\Connection
      */
     public function getConnection(): Connection
     {
@@ -204,7 +204,7 @@ abstract class Model implements ArrayAccess, JsonSerializable
      * Set the connection associated with the model.
      *
      * @param string|null $name
-     * @return \Starme\Laravel\Es\Eloquent\Model
+     * @return \Starme\LaravelEs\Eloquent\Model
      */
     public function setConnection(?string $name): Model
     {
@@ -217,7 +217,7 @@ abstract class Model implements ArrayAccess, JsonSerializable
      * Resolve a connection instance.
      *
      * @param  string|null  $connection
-     * @return \Starme\Laravel\Es\Connection
+     * @return \Starme\LaravelEs\Connection
      */
     public static function resolveConnection($connection = null): Connection
     {
@@ -227,7 +227,7 @@ abstract class Model implements ArrayAccess, JsonSerializable
     /**
      * Get the connection resolver instance.
      *
-     * @return \Starme\Laravel\Es\ConnectionResolverInterface
+     * @return \Starme\LaravelEs\ConnectionResolverInterface
      */
     public static function getConnectionResolver(): Resolver
     {
@@ -237,7 +237,7 @@ abstract class Model implements ArrayAccess, JsonSerializable
     /**
      * Set the connection resolver instance.
      *
-     * @param  \Starme\Laravel\Es\ConnectionResolverInterface  $resolver
+     * @param  \Starme\LaravelEs\ConnectionResolverInterface  $resolver
      * @return void
      */
     public static function setConnectionResolver(Resolver $resolver)
@@ -258,7 +258,7 @@ abstract class Model implements ArrayAccess, JsonSerializable
     /**
      * Get a new query builder for the model's table.
      *
-     * @return \Starme\Laravel\Es\Query\Builder
+     * @return \Starme\LaravelEs\Query\Builder
      */
     public function newQuery(): Builder
     {

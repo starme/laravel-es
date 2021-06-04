@@ -1,6 +1,6 @@
 <?php
 
-namespace Starme\Laravel\Es\Eloquent\Concerns;
+namespace Starme\LaravelEs\Eloquent\Concerns;
 
 trait HasAttributes
 {
