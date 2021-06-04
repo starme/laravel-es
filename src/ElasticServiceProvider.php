@@ -14,6 +14,10 @@ class ElasticServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        $this->publishes([
+            __DIR__ . '/config/es.php' => config_path('es.php'),
+        ], 'es-config');
+        
         Model::setConnectionResolver($this->app['es']);
 
 //        Model::setEventDispatcher($this->app['events']);
