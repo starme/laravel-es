@@ -207,6 +207,17 @@ class Connection implements ConnectionInterface
     }
 
     /**
+     * Run a count statement against the elasticsearch.
+     *
+     * @params array $body
+     * @throws \Starme\LaravelEs\Exceptions\QueryException
+     */
+    public function count(array $params)
+    {
+        return $this->run('count', array_intersect_key($params, ['body'=>1, 'index'=>1]));
+    }
+
+    /**
      * Run an insert statement against the elasticsearch.
      *
      * @params array $params

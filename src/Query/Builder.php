@@ -675,6 +675,17 @@ class Builder
     /**
      * Execute the query as a "select" statement.
      *
+     * @return int
+     */
+    public function count(): int
+    {
+        $result = $this->runCount();
+        return $result['count'];
+    }
+
+    /**
+     * Execute the query as a "select" statement.
+     *
      * @param string $scroll
      * @param string $scroll_id
      * @return \Starme\LaravelEs\Query\Builder
@@ -757,6 +768,16 @@ class Builder
     protected function runSelect(): array
     {
         return $this->connection->select($this->grammar->compileSelect($this));
+    }
+
+    /**
+     * Run the query as a "count" statement against the connection.
+     *
+     * @return array
+     */
+    protected function runCount(): array
+    {
+        return $this->connection->count($this->grammar->compileSelect($this));
     }
 
     /**
