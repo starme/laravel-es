@@ -223,6 +223,17 @@ class Connection implements ConnectionInterface
      * @params array $params
      * @throws \Starme\LaravelEs\Exceptions\QueryException
      */
+    public function bulk($params)
+    {
+        return $this->run('bulk', $params);
+    }
+
+    /**
+     * Run an insert statement against the elasticsearch.
+     *
+     * @params array $params
+     * @throws \Starme\LaravelEs\Exceptions\QueryException
+     */
     public function insert($params)
     {
         return $this->run('index', $params);

@@ -915,6 +915,27 @@ class Builder
      * @param array $values
      * @return bool
      */
+    public function batchInsert(array $values): bool
+    {
+        // Finally, we will run this query against the database connection and return
+        // the results. We will need to also flatten these bindings before running
+        // the query so they are all in one huge, flattened array for execution.
+        try {
+            $res = $this->connection->bulk(
+                $this->grammar->compileBatchInsert($this, $values)
+            );
+            return $res['errors'] === false;
+        } catch (\Exception $e) {
+            return false;
+        }
+    }
+
+    /**
+     * Insert new records into the database.
+     *
+     * @param array $values
+     * @return bool
+     */
     public function insert(array $values): bool
     {
         // Finally, we will run this query against the database connection and return
