@@ -22,7 +22,7 @@ trait Warp
             $body['script'] = $this->compileScript($columns);
         }
         else{
-            $body = array_map([$this, 'wrap'], $columns);
+            $body = $columns; #array_map([$this, 'wrap'], $columns);
         }
         return compact('id', 'body');
     }

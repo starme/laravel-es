@@ -380,6 +380,31 @@ class Grammar
     }
 
     /**
+     * Compile an batch insert statement into SQL.
+     *
+     * @param \Starme\LaravelEs\Query\Builder $query
+     * @param array $values
+     * @return array
+     */
+    public function compileBatchUpdate(Builder $query, array $values): array
+    {
+        $res = [];
+        $attr = $this->concatenate($this->compileComponents($query));
+        foreach ($values as $item) {
+            $data = array_merge_recursive(
+                $attr,
+                $this->columnize($item, empty($query->wheres))
+            );
+            $res[]['index'] = [
+                '_index' => $data['index'],
+                '_id' => $data['id']
+            ];
+            $res[]['doc'] = $data['body'];
+        }
+        return array_merge_recursive($attr, ['body'=>$res]);
+    }
+
+    /**
      * Compile an insert statement into SQL.
      *
      * @param \Starme\LaravelEs\Query\Builder $query
