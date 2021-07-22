@@ -395,7 +395,7 @@ class Grammar
                 $attr,
                 $this->columnize($item, empty($query->wheres))
             );
-            $res[]['index'] = [
+            $res[]['update'] = [
                 '_index' => $data['index'],
                 '_id' => $data['id']
             ];

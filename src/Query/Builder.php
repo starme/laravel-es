@@ -913,9 +913,9 @@ class Builder
      * Insert new records into the database.
      *
      * @param array $values
-     * @return bool
+     * @return array
      */
-    public function batchInsert(array $values): bool
+    public function batchInsert(array $values): array
     {
         // Finally, we will run this query against the database connection and return
         // the results. We will need to also flatten these bindings before running
@@ -929,9 +929,9 @@ class Builder
      * Insert new records into the database.
      *
      * @param array $values
-     * @return bool
+     * @return array
      */
-    public function batchUpdate(array $values): bool
+    public function batchUpdate(array $values): array
     {
         // Finally, we will run this query against the database connection and return
         // the results. We will need to also flatten these bindings before running
