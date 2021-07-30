@@ -14,16 +14,30 @@ trait Warp
      * @param bool $build_script
      * @return array
      */
-    public function columnize(array $columns, $build_script=true): array
+    public function columnizeUpdate(array $columns, $build_script=true): array
     {
         $id = $columns['id'] ?? "";
+
+        unset($column['id']);
 
         if ( ! $build_script) {
             $body['script'] = $this->compileScript($columns);
         }
         else{
-            $body = $columns; #array_map([$this, 'wrap'], $columns);
+            $body = $columns;
         }
+        return compact('id', 'body');
+    }
+
+    /**
+     * Convert an array of column names into a delimited string.
+     *
+     * @param array $columns
+     * @return array
+     */
+    public function columnizeInsert(array $body): array
+    {
+        $id = $body['id'] ?? "";
         return compact('id', 'body');
     }
 

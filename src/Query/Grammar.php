@@ -368,7 +368,7 @@ class Grammar
         foreach ($values as $item) {
             $data = array_merge_recursive(
                 $attr,
-                $this->columnize($item, empty($query->wheres))
+                $this->columnizeInsert($item, empty($query->wheres))
             );
             $res[]['index'] = [
                 '_index' => $data['index'],
@@ -393,7 +393,7 @@ class Grammar
         foreach ($values as $item) {
             $data = array_merge_recursive(
                 $attr,
-                $this->columnize($item, empty($query->wheres))
+                $this->columnizeUpdate($item, empty($query->wheres))
             );
             $res[]['update'] = [
                 '_index' => $data['index'],
@@ -413,7 +413,13 @@ class Grammar
      */
     public function compileInsert(Builder $query, array $values): array
     {
-        return $this->compileUpdate($query, $values);
+        if (empty($values)) {
+            return [];
+        }
+        return array_filter(array_merge_recursive(
+            $this->concatenate($this->compileComponents($query)),
+            $this->columnizeInsert($values, empty($query->wheres))
+        ));
     }
 
     /**
@@ -430,7 +436,7 @@ class Grammar
         }
         return array_filter(array_merge_recursive(
             $this->concatenate($this->compileComponents($query)),
-            $this->columnize($values, empty($query->wheres))
+            $this->columnizeUpdate($values, empty($query->wheres))
         ));
     }
 
