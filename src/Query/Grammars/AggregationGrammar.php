@@ -45,7 +45,15 @@ trait AggregationGrammar
         $aggs = [];
         foreach ($columns as $column) {
             if ($queries[$column] instanceof Builder) {
-                $aggs[$column] = $this->compileAggFilters($queries[$column]);
+                $alias = $this->defaultAggAlias('terms', $column);
+                $normal = $this->compileSimpleAgg('terms', [$column]);
+                $nested = array_filter($this->compileAggFilters($queries[$column]));
+                if (isset($nested['filter'])) {
+                    $normal[$alias]['aggs'] = compact('nested');
+                }else {
+                    $normal[$alias] = array_merge($aggs[$alias], $nested);
+                }
+                $aggs = array_merge($aggs, $normal);
                 continue;
             }
             $aggs = array_merge_recursive($aggs, $this->compileTerms([$column], null));

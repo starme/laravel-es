@@ -489,24 +489,27 @@ class Builder
     }
 
     /**
+     * @param \Closure $callback
+     * @return false|mixed
+     */
+    public function groupByNested(Closure $callback)
+    {
+        return call_user_func($callback, $this->forNestedWhere());
+    }
+
+    /**
      * Add a "group by" clause to the query.
      *
-     * @param  array $groups
+     * @param string $group
+     * @param null|callable $callback
      * @return $this
      */
-    public function groupByRaw(array $groups): Builder
+    public function groupByRaw(string $group, $callback=null): Builder
     {
-        foreach ($groups as $name=>$callback) {
-            if (is_callable($callback)) {
-                $groups[$name] = call_user_func($callback, $this->forNestedWhere());
-                continue;
-            }
-            if (is_string($callback)) {
-                $groups[$callback] = null;
-            }
-            unset($groups[$name]);
+        if (!$callback || !is_callable($callback)) {
+            return $this->groupBy($group);
         }
-        $this->setAggregate('queries', array_keys($groups), $groups);
+        $this->setAggregate('queries', [$group], [$group=>$this->groupByNested($callback)]);
         return $this;
     }
 

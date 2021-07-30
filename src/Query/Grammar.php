@@ -479,6 +479,9 @@ class Grammar
         if ($operator == 'or') {
             return 'should';
         }
+        if ($operator == 'like') {
+            return 'must';
+        }
         return "filter";
     }
 
