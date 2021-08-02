@@ -79,12 +79,14 @@ trait AggregationGrammar
     {
         $wheres = $this->compileRaw($this->compileWheres($query));
         $filter = [];
-        foreach ($wheres['bool'] as $type => $where) {
-            if($type == 'filter') {
-                $filter = head($where);
-                continue;
+        if (isset($wheres['bool'])) {
+            foreach ($wheres['bool'] as $type => $where) {
+                if($type == 'filter') {
+                    $filter = head($where);
+                    continue;
+                }
+                $filter = array_merge($filter, $where);
             }
-            $filter = array_merge($filter, $where);
         }
         $aggs = $this->compileAggregate($query, $query->aggregate);
         return compact('filter', 'aggs');
