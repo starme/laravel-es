@@ -51,7 +51,7 @@ trait AggregationGrammar
                 if (isset($nested['filter'])) {
                     $normal[$alias]['aggs'] = compact('nested');
                 }else {
-                    $normal[$alias] = array_merge($aggs[$alias], $nested);
+                    $normal[$alias] = array_merge($normal[$alias], $nested);
                 }
                 $aggs = array_merge($aggs, $normal);
                 continue;
