@@ -17,8 +17,9 @@ trait Warp
     public function columnizeUpdate(array $columns, $build_script=true): array
     {
         $id = $columns['id'] ?? "";
-
-        unset($column['id']);
+        if ($id) {
+            unset($column['id']);
+        }
 
         if ( ! $build_script) {
             $body['script'] = $this->compileScript($columns);
