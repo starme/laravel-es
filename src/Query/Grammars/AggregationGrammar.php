@@ -6,15 +6,13 @@ use Starme\LaravelEs\Query\Builder;
 trait AggregationGrammar
 {
 
-    public function compileAggregate(Builder $query, array $aggregate): array
+    public function compileAggregate(Builder $query, array $aggregates): array
     {
         $aggs = [];
 //        if( ! $aggregates) {
 //            return $aggs;
 //        }
-//        if (is_array($aggregate['function'])) {
-//            $aggregate['function'] = 'queries';
-//        }
+       
         foreach ($aggregates as $aggregate) {
             $method = 'compile'.ucfirst($aggregate['function']);
             $aggs = array_merge($aggs, $this->$method($aggregate['columns'], $aggregate['queries']));
