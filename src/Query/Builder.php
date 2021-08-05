@@ -498,7 +498,7 @@ class Builder
     }
 
     /**
-     * Add a "group by" clause to the query.
+     * Add a "group by" clause to the query nested.
      *
      * @param string $group
      * @param null|callable $callback
@@ -510,6 +510,28 @@ class Builder
             return $this->groupBy($group);
         }
         $this->setAggregate('queries', [$group], [$group=>$this->groupByNested($callback)]);
+        return $this;
+    }
+
+    /**
+     * Add a "group by" clause to the bulk.
+     *
+     * @param  array $groups
+     * @return $this
+     */
+    public function groupByBulk(array $groups): Builder
+    {
+        foreach ($groups as $name=>$callback) {
+            if (is_callable($callback)) {
+                $groups[$name] = call_user_func($callback, $this->forNestedWhere());
+                continue;
+            }
+            if (is_string($callback)) {
+                $groups[$callback] = null;
+            }
+            unset($groups[$name]);
+        }
+        $this->setAggregate('bulk', array_keys($groups), $groups);
         return $this;
     }
 
@@ -756,6 +778,7 @@ class Builder
             }
             if (isset($agg['doc_count'])) {
                 $results[$name] = $this->onceWithAggregate(['aggregations'=>$agg]);
+                //$results[$name]['doc_count'] = $agg['doc_count'];
                 continue;
             }
             $results[$name] = $agg['buckets'];
@@ -1109,7 +1132,8 @@ class Builder
     protected function setAggregate(string $function, array $columns, array $queries=[]): Builder
     {
         $aggregate = compact('function', 'columns', 'queries');
-        $this->aggregate = array_merge_recursive($this->aggregate, $aggregate);
+        // $this->aggregate = array_merge_recursive($this->aggregate, $aggregate);
+        $this->aggregate[] = $aggregate;
         $this->limit = 0;
         $this->offset = null;
         $this->columns = [];

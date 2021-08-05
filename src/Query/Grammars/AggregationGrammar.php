@@ -8,11 +8,18 @@ trait AggregationGrammar
 
     public function compileAggregate(Builder $query, array $aggregate): array
     {
-        if( ! $aggregate) {
-            return [];
+        $aggs = [];
+//        if( ! $aggregates) {
+//            return $aggs;
+//        }
+//        if (is_array($aggregate['function'])) {
+//            $aggregate['function'] = 'queries';
+//        }
+        foreach ($aggregates as $aggregate) {
+            $method = 'compile'.ucfirst($aggregate['function']);
+            $aggs = array_merge($aggs, $this->$method($aggregate['columns'], $aggregate['queries']));
         }
-        $method = 'compile'.ucfirst($aggregate['function']);
-        return $this->$method($aggregate['columns'], $aggregate['queries']);
+        return $aggs;
     }
 
     protected function compileTerms($columns, $queries): array
@@ -44,7 +51,7 @@ trait AggregationGrammar
     {
         $aggs = [];
         foreach ($columns as $column) {
-            if ($queries[$column] instanceof Builder) {
+            if (isset($queries[$column]) && $queries[$column] instanceof Builder) {
                 $alias = $this->defaultAggAlias('terms', $column);
                 $normal = $this->compileSimpleAgg('terms', [$column]);
                 $nested = array_filter($this->compileAggFilters($queries[$column]));
@@ -54,6 +61,19 @@ trait AggregationGrammar
                     $normal[$alias] = array_merge($normal[$alias], $nested);
                 }
                 $aggs = array_merge($aggs, $normal);
+                continue;
+            }
+            $aggs = array_merge_recursive($aggs, $this->compileTerms([$column], null));
+        }
+        return $aggs;
+    }
+
+    protected function compileBulk($columns, $queries): array
+    {
+        $aggs = [];
+        foreach ($columns as $column) {
+            if ($queries[$column] instanceof Builder) {
+                $aggs[$column] = $this->compileAggFilters($queries[$column]);
                 continue;
             }
             $aggs = array_merge_recursive($aggs, $this->compileTerms([$column], null));
@@ -81,7 +101,8 @@ trait AggregationGrammar
         $filter = [];
         if (isset($wheres['bool'])) {
             foreach ($wheres['bool'] as $type => $where) {
-                if($type == 'filter') {
+                // if($type == 'filter') {
+                if(in_array($type, ['filter', 'must'])) {
                     $filter = head($where);
                     continue;
                 }
