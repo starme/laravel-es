@@ -18,7 +18,7 @@ trait Warp
     {
         $id = $columns['id'] ?? "";
         if ($id) {
-            unset($column['id']);
+            unset($columns['id']);
         }
 
         if ( ! $build_script) {
