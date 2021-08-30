@@ -59,8 +59,6 @@ class Blueprint
     public function build($grammar): array
     {
         $statements = [];
-
-//        dd($this->commands);
         foreach ($this->commands as $command) {
             $method = 'compile' . ucfirst($command->name);
 
@@ -70,7 +68,6 @@ class Blueprint
                 }
             }
         }
-        dd($statements);
         return $statements;
     }
 
