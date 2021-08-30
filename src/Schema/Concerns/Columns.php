@@ -5,7 +5,7 @@ namespace Starme\LaravelEs\Schema\Concerns;
 use Illuminate\Support\Fluent;
 use Starme\LaravelEs\Schema\ColumnDefinition;
 
-trait WithColumns
+trait Columns
 {
 
     /**
