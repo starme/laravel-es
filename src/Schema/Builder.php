@@ -4,11 +4,12 @@ namespace Starme\LaravelEs\Schema;
 
 use Closure;
 use Starme\LaravelEs\Connection;
+use Starme\LaravelEs\Exceptions\IndexNotFound;
+use Starme\LaravelEs\Exceptions\QueryException;
 
 class Builder
 {
-    use Concerns\Alias,
-        Concerns\Template;
+    use Concerns\Alias;
 
     /**
      * The database connection instance.
@@ -47,41 +48,80 @@ class Builder
      *
      * @param string $table
      * @param \Closure $callback
-     * @return void
+     * @return array
      */
-    public function create(string $table, Closure $callback)
+    public function create(string $table, Closure $callback): array
     {
-        $this->build(tap($this->createBlueprint($table), function ($blueprint) use ($callback) {
-            $blueprint->createIndex();
+        $body = $this->build(tap($this->createBlueprint($table), function ($blueprint) use ($callback) {
+            $blueprint->index();
 
             $callback($blueprint);
         }));
+
+        $index = $body['index'];
+        $body = array_diff_key($body, compact('index'));
+        return $this->connection->index('create', compact('index', 'body'));
     }
 
     /**
      * Create a new table on the schema.
      *
      * @param string $table
-     * @return void
+     * @return bool
      */
-    public function exists(string $table)
+    public function exists(string $table): bool
     {
-        $this->build(tap($this->createBlueprint($table), function ($blueprint) {
-            $blueprint->existsIndex();
+        $body = $this->build(tap($this->createBlueprint($table), function ($blueprint) {
+            $blueprint->index();
         }));
+        return $this->connection->index('exists', $body);
     }
 
     /**
      * Drop a table on the schema.
      *
      * @param string $table
-     * @return void
+     * @return array
      */
-    public function drop(string $table)
+    public function drop(string $table): array
     {
-        $this->build(tap($this->createBlueprint($table), function ($blueprint) {
-            $blueprint->dropIndex();
+        $body = $this->build(tap($this->createBlueprint($table), function ($blueprint) {
+            $blueprint->index();
         }));
+
+        return $this->connection->index('delete', $body);
+    }
+
+    /**
+     * @deprecated Supported of later.
+     *
+     * @param string $table
+     * @param string $target
+     * @return mixed
+     * @throws QueryException
+     */
+    public function cloneIndex(string $table, string $target)
+    {
+        $body = $this->build(tap($this->createBlueprint($table), function ($blueprint) use ($target) {
+            $blueprint->cloneIndex($target);
+        }));
+
+        return $this->connection->index('clone', $body);
+    }
+
+    /**
+     * Drop a table on the schema.
+     *
+     * @param string $table
+     * @return array
+     */
+    public function dropIfExists(string $table): array
+    {
+        if ($this->exists($table)) {
+            return $this->drop($table);
+        }
+        return [];
+//        throw new IndexNotFound('Delete', $table);
     }
 
     /**
@@ -92,7 +132,7 @@ class Builder
      */
     protected function build(Blueprint $blueprint): array
     {
-        return $blueprint->build($this->connection, $this->grammar);
+        return $blueprint->build($this->grammar);
     }
 
     /**

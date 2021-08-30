@@ -275,9 +275,24 @@ class Connection implements ConnectionInterface
      * @params array $params
      * @throws \Starme\LaravelEs\Exceptions\QueryException
      */
+    public function index(string $type, array $params)
+    {
+        return  $this->run($type, $params, function ($method, $params) {
+            return $this->connection->indices()->$method($params);
+        });
+    }
+
+
+    /**
+     * Run an template statement against the elasticsearch.
+     *
+     * @params string $type
+     * @params array $params
+     * @throws \Starme\LaravelEs\Exceptions\QueryException
+     */
     public function template(string $type, array $params)
     {
-        return  $this->run($type . 'Template', $params, function ($method, $params) {
+        return $this->run($type . 'Template', $params, function ($method, $params) {
             return $this->connection->indices()->$method($params);
         });
     }
@@ -291,7 +306,9 @@ class Connection implements ConnectionInterface
      */
     public function alias(string $type, array $params)
     {
-        return  $this->run($type . 'Alias', $params, function ($method, $params) {
+        $method = $type == 'toggle' ? 'updateAliases' : $type . 'Alias';
+
+        return  $this->run($method, $params, function ($method, $params) {
             return $this->connection->indices()->$method($params);
         });
     }

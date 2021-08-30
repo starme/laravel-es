@@ -48,9 +48,7 @@ class ConnectionResolver implements ConnectionResolverInterface
         }
 
         if (! isset($this->connections[$name])) {
-            $this->connections[$name] = $this->configure(
-                $this->makeConnection($name), 'read'
-            );
+            $this->connections[$name] = $this->makeConnection($name);
         }
 
         return $this->connections[$name];

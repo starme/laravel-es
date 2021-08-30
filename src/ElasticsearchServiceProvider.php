@@ -39,7 +39,7 @@ class ElasticsearchServiceProvider extends ServiceProvider
         });
 
         $this->app->singleton('es.schema', function ($app){
-            return $app['es.connection']->getSchemaBuilder();
+            return $app['es.connection']->schema();
         });
     }
 

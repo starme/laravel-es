@@ -5,10 +5,11 @@ namespace Starme\LaravelEs\Schema;
 use Closure;
 use Illuminate\Support\Fluent;
 
-
 class Blueprint
 {
 
+    use Concerns\Columns;
+    
     /**
      * The table the blueprint describes.
      *
@@ -22,13 +23,6 @@ class Blueprint
      * @var string
      */
     protected $prefix;
-
-    /**
-     * The columns that should be added to the table.
-     *
-     * @var \Illuminate\Database\Schema\ColumnDefinition[]
-     */
-    protected $columns = [];
 
     /**
      * The commands that should be run for the table.
@@ -62,36 +56,60 @@ class Blueprint
         }
     }
 
-    public function build($connection, $grammar): array
+    public function build($grammar): array
     {
         $statements = [];
 
+//        dd($this->commands);
         foreach ($this->commands as $command) {
             $method = 'compile' . ucfirst($command->name);
 
             if (method_exists($grammar, $method)) {
-                if (! is_null($sql = $grammar->$method($this, $command, $connection))) {
+                if (! is_null($sql = $grammar->$method($this, $command))) {
                     $statements = array_merge($statements, (array) $sql);
                 }
             }
         }
+        dd($statements);
         return $statements;
     }
 
-    /**
-     * @return \Illuminate\Support\Fluent
-     */
-    public function createTemplate(): Fluent
+    public function index()
     {
-        return $this->addCommand('CreateTemplate');
+        return $this->addCommand('Index');
+    }
+
+    /**
+     * Add create index command.
+     *
+     * @return Fluent
+     */
+    public function createIndex()
+    {
+        return $this->addCommand('CreateIndex');
+    }
+
+    public function existsIndex()
+    {
+        return $this->addCommand('ExistsIndex');
+    }
+
+    public function dropIndex()
+    {
+        return $this->addCommand('DropIndex');
+    }
+
+    public function cloneIndex(string $target)
+    {
+        return $this->addCommand('CloneIndex', ['target'=>$target]);
     }
 
     /**
      * @return \Illuminate\Support\Fluent
      */
-    public function updateTemplate(): Fluent
+    public function putTemplate(): Fluent
     {
-        return $this->addCommand('UpdateTemplate');
+        return $this->addCommand('PutTemplate');
     }
 
     /**
@@ -100,7 +118,52 @@ class Blueprint
      */
     public function alias($name): Fluent
     {
-        return $this->addCommand('Alias', ['alias'=>$name]);
+        return $this->addCommand('CreateAlias', ['alias'=>$name]);
+    }
+
+    /**
+     * @param $name
+     * @return Fluent
+     */
+    public function existsAlias($name): Fluent
+    {
+        return $this->addCommand('ExistsAlias', ['alias'=>$name]);
+    }
+
+    /**
+     * @param $name
+     * @return Fluent
+     */
+    public function dropAlias($name): Fluent
+    {
+        return $this->addCommand('DropAlias', ['alias'=>$name]);
+    }
+
+    /**
+     * @param $name
+     * @return Fluent
+     */
+    public function getAlias($name): Fluent
+    {
+        return $this->addCommand('GetAlias', ['alias'=>$name]);
+    }
+
+    /**
+     * @return Fluent
+     */
+    public function getIndexAlias(): Fluent
+    {
+        return $this->addCommand('GetIndexAlias');
+    }
+
+    public function order(int $number)
+    {
+        return $this->addCommand('TemplateOrder', ['order'=>$number]);
+    }
+
+    public function index_patterns(string $match)
+    {
+        return $this->addCommand('TemplateMatch', ['index_patterns'=>$match]);
     }
 
     /**
@@ -147,165 +210,6 @@ class Blueprint
         return $this->settingCommand('refresh_interval', $number);
     }
 
-    /**
-     * Create a new string column on the table.
-     *
-     * @param string $column
-     * @return \Starme\LaravelEs\Schema\ColumnDefinition
-     */
-    public function string(string $column): ColumnDefinition
-    {
-        return $this->addColumn('keyword', $column);
-    }
-
-    /**
-     * Create a new text column on the table.
-     *
-     * @param string $column
-     * @return \Starme\LaravelEs\Schema\ColumnDefinition
-     */
-    public function text(string $column): ColumnDefinition
-    {
-        return $this->addColumn('text', $column);
-    }
-
-    /**
-     * Create a new tiny integer (1-byte) column on the table.
-     *
-     * @param string $column
-     * @return \Starme\LaravelEs\Schema\ColumnDefinition
-     */
-    public function tinyInteger(string $column): ColumnDefinition
-    {
-        return $this->addColumn('byte', $column);
-    }
-
-    /**
-     * Create a new small integer (2-byte) column on the table.
-     *
-     * @param string $column
-     * @return \Starme\LaravelEs\Schema\ColumnDefinition
-     */
-    public function smallInteger(string $column): ColumnDefinition
-    {
-        return $this->addColumn('short', $column);
-    }
-
-    /**
-     * Create a new integer (4-byte) column on the table.
-     *
-     * @param string $column
-     * @return \Starme\LaravelEs\Schema\ColumnDefinition
-     */
-    public function integer(string $column): ColumnDefinition
-    {
-        return $this->addColumn('integer', $column);
-    }
-
-    /**
-     * Create a new big integer (8-byte) column on the table.
-     *
-     * @param string $column
-     * @return \Starme\LaravelEs\Schema\ColumnDefinition
-     */
-    public function bigInteger(string $column): ColumnDefinition
-    {
-        return $this->addColumn('long', $column);
-    }
-
-    /**
-     * Create a new float column on the table.
-     *
-     * @param string $column
-     * @return \Starme\LaravelEs\Schema\ColumnDefinition
-     */
-    public function float(string $column): ColumnDefinition
-    {
-        return $this->addColumn('float', $column);
-    }
-
-    /**
-     * Create a new double column on the table.
-     *
-     * @param string $column
-     * @return \Starme\LaravelEs\Schema\ColumnDefinition
-     */
-    public function double(string $column): ColumnDefinition
-    {
-        return $this->addColumn('double', $column);
-    }
-
-    /**
-     * Create a new boolean column on the table.
-     *
-     * @param string $column
-     * @return \Starme\LaravelEs\Schema\ColumnDefinition
-     */
-    public function boolean(string $column): ColumnDefinition
-    {
-        return $this->addColumn('boolean', $column);
-    }
-
-    /**
-     * Create a new date column on the table.
-     *
-     * @param string $column
-     * @return \Starme\LaravelEs\Schema\ColumnDefinition
-     */
-    public function date(string $column): ColumnDefinition
-    {
-        return $this->addColumn('date', $column);
-    }
-
-    /**
-     * Create a new binary column on the table.
-     *
-     * @param string $column
-     * @return \Starme\LaravelEs\Schema\ColumnDefinition
-     */
-    public function binary(string $column): ColumnDefinition
-    {
-        return $this->addColumn('binary', $column);
-    }
-
-    /**
-     * Create a new array column on the table.
-     *
-     * @param string $column
-     * @return \Starme\LaravelEs\Schema\ColumnDefinition
-     */
-    public function array(string $column): ColumnDefinition
-    {
-        return $this->addColumn('array', $column);
-    }
-
-    /**
-     * Create a new object column on the table.
-     *
-     * @param string $column
-     * @return \Starme\LaravelEs\Schema\ColumnDefinition
-     */
-    public function object(string $column): ColumnDefinition
-    {
-        return $this->addColumn('object', $column);
-    }
-
-    /**
-     * Add a new column to the blueprint.
-     *
-     * @param string $type
-     * @param string $name
-     * @param array $parameters
-     * @return \Starme\LaravelEs\Schema\ColumnDefinition
-     */
-    public function addColumn(string $type, string $name, array $parameters = []): ColumnDefinition
-    {
-        $this->columns[] = $column = new ColumnDefinition(
-            array_merge(compact('type', 'name'), $parameters)
-        );
-
-        return $column;
-    }
 
     /**
      * Add a new setting command to the blueprint.
@@ -325,13 +229,12 @@ class Blueprint
      * Add a new command to the blueprint.
      *
      * @param string $name
-     * @param  array  $parameters
+     * @param array|object $command
      * @return \Illuminate\Support\Fluent
      */
-    protected function addCommand(string $name, array $parameters = []): Fluent
+    protected function addCommand(string $name, $command=[]): Fluent
     {
-        $this->commands[] = $command = $this->createCommand($name, $parameters);
-
+        $this->commands[] = $command = $this->createCommand($name, $command);;
         return $command;
     }
 
@@ -339,12 +242,15 @@ class Blueprint
      * Create a new Fluent command.
      *
      * @param string $name
-     * @param array $parameters
+     * @param array|object $command
      * @return \Illuminate\Support\Fluent
      */
-    protected function createCommand(string $name, array $parameters = []): Fluent
+    protected function createCommand(string $name, $command = []): Fluent
     {
-        return new Fluent(array_merge(compact('name'), $parameters));
+        if ($command instanceof Fluent) {
+            return $command->name($name);
+        }
+        return new Fluent(array_merge(compact('name'), $command));
     }
 
     /**
