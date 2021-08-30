@@ -83,17 +83,17 @@ class Blueprint
      */
     public function createIndex()
     {
-        return $this->addCommand('CreateIndex');
+        return $this->addCommand('Index');
     }
 
     public function existsIndex()
     {
-        return $this->addCommand('ExistsIndex');
+        return $this->addCommand('Index');
     }
 
     public function dropIndex()
     {
-        return $this->addCommand('DropIndex');
+        return $this->addCommand('Index');
     }
 
     public function cloneIndex(string $target)
@@ -115,7 +115,7 @@ class Blueprint
      */
     public function alias($name): Fluent
     {
-        return $this->addCommand('CreateAlias', ['alias'=>$name]);
+        return $this->addCommand('Alias', ['alias'=>$name]);
     }
 
     /**
@@ -124,7 +124,7 @@ class Blueprint
      */
     public function existsAlias($name): Fluent
     {
-        return $this->addCommand('ExistsAlias', ['alias'=>$name]);
+        return $this->addCommand('Alias', ['alias'=>$name]);
     }
 
     /**
@@ -133,7 +133,7 @@ class Blueprint
      */
     public function dropAlias($name): Fluent
     {
-        return $this->addCommand('DropAlias', ['alias'=>$name]);
+        return $this->addCommand('Alias', ['alias'=>$name]);
     }
 
     /**
@@ -150,7 +150,7 @@ class Blueprint
      */
     public function getIndexAlias(): Fluent
     {
-        return $this->addCommand('GetIndexAlias');
+        return $this->addCommand('Index');
     }
 
     public function order(int $number)
@@ -258,6 +258,16 @@ class Blueprint
     public function getTable(): string
     {
         return $this->prefix . $this->table;
+    }
+
+    /**
+     * Warp the alias the blueprint describes.
+     *
+     * @return string
+     */
+    public function warpAlias($alias): string
+    {
+        return $this->prefix . $alias;
     }
 
     /**

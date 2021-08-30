@@ -35,46 +35,59 @@ class Grammar
         ];
     }
 
-    public function compileCreateAlias($blueprint, $command): array
+    public function compileAlias($blueprint, $command): array
     {
-        return ['index' => $blueprint->getTable(), 'name' => $command->alias];
+        return [
+            'index' => $blueprint->getTable(),
+            'name' => $blueprint->warpAlias($command->alias)
+         ];
     }
 
-    public function compileExistsAlias($blueprint, $command): array
-    {
-        return ['index' => $blueprint->getTable(), 'name' => $command->alias];
-    }
+    // public function compileCreateAlias($blueprint, $command): array
+    // {
+    //     return [
+    //         'index' => $blueprint->getTable(),
+    //         'name' => $blueprint->warpAlias($command->alias)
+    //      ];
+    // }
 
-    public function compileDropAlias($blueprint, $command): array
-    {
-        return ['index' => $blueprint->getTable(), 'name' => $command->alias];
-    }
+    // public function compileExistsAlias($blueprint, $command): array
+    // {
+    //     return [
+    //         'index' => $blueprint->getTable(),
+    //         'name' => $blueprint->warpAlias($command->alias)
+    //      ];
+    // }
+
+    // public function compileDropAlias($blueprint, $command): array
+    // {
+    //     return ['index' => $blueprint->getTable(), 'name' => $command->alias];
+    // }
 
     public function compileGetAlias($blueprint, $command): array
     {
-        return ['name' => $command->alias];
+        return ['name' => $blueprint->warpAlias($command->alias)];
     }
 
-    public function compileGetIndexAlias($blueprint, $command): array
-    {
-        return ['index' => $blueprint->getTable()];
-    }
+    // public function compileGetIndexAlias($blueprint, $command): array
+    // {
+    //     return ['index' => $blueprint->getTable()];
+    // }
 
-    public function compileCreateIndex($blueprint, $command): array
-    {
-        ///, 'mappings' => ['properties' => $this->getColumns($blueprint)]
-        return ['index' => $blueprint->getTable()];
-    }
+    // public function compileCreateIndex($blueprint, $command): array
+    // {
+    //     return ['index' => $blueprint->getTable()];
+    // }
 
-    public function compileExistsIndex($blueprint, $command): array
-    {
-        return ['index' => $blueprint->getTable()];
-    }
+    // public function compileExistsIndex($blueprint, $command): array
+    // {
+    //     return ['index' => $blueprint->getTable()];
+    // }
 
-    public function compileDropIndex($blueprint, $command): array
-    {
-        return ['index' => $blueprint->getTable()];
-    }
+    // public function compileDropIndex($blueprint, $command): array
+    // {
+    //     return ['index' => $blueprint->getTable()];
+    // }
 
     public function compileCloneIndex($blueprint, $command): array
     {
@@ -98,14 +111,6 @@ class Grammar
         return ['mappings' => ['properties' => $this->columns]];
     }
 
-//    protected function getColumns($blueprint): array
-//    {
-//        if ($blueprint->getColumns()) {
-//            return array_merge(...array_map([$this, 'warp'], $blueprint->getColumns()));
-//        }
-//        return [];
-//    }
-
     protected function warpCommand($command): array
     {
         return [$command->type => $command->value];
@@ -115,10 +120,5 @@ class Grammar
     {
         return [$command->column => array_diff_key($command->toArray(), array_flip(['column', 'name']))];
     }
-
-//    public function warp($value): array
-//    {
-//        return [$value->column => array_diff_key($value->toArray(), array_flip(['column', 'name']))];
-//    }
 
 }

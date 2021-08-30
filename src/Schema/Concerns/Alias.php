@@ -13,11 +13,7 @@ trait Alias
      */
     public function alias(string $table, string $alias)
     {
-        $body = $this->build(tap($this->createBlueprint($table), function ($blueprint) use ($alias) {
-            $blueprint->alias($alias);
-        }));
-
-        return $this->connection->alias('put', $body);
+        return $this->_alias(table, $alias, 'put');
     }
 
     /**
@@ -29,11 +25,7 @@ trait Alias
      */
     public function existsAlias(string $table, string $alias)
     {
-        $body = $this->build(tap($this->createBlueprint($table), function ($blueprint) use ($alias) {
-            $blueprint->existsAlias($alias);
-        }));
-
-        return $this->connection->alias('exists', $body);
+        return $this->_alias(table, $alias, 'exists');
     }
 
     /**
@@ -45,42 +37,52 @@ trait Alias
      */
     public function dropAlias(string $table, string $alias)
     {
-        $body = $this->build(tap($this->createBlueprint($table), function (Blueprint $blueprint) use ($alias) {
-            $blueprint->dropAlias($alias);
-        }));
-
-        return $this->connection->alias('delete', $body);
+        return $this->_alias(table, $alias, 'delete');
     }
-
+   
     /**
      * Index under alias.
      *
      * @param string $alias
-     * @return void
+     * @return array
      */
-    public function getAlias(string $alias)
+    public function getAlias(string $alias): array
     {
-        $body = $this->build(tap($this->createBlueprint(''), function ($blueprint) use ($alias) {
-            $blueprint->getAlias($alias);
-        }));
-
-        return $this->connection->alias('get', $body);
+        return array_keys($this->_alias('', $alias, 'get'));
     }
 
     /**
      * Get aliases of index name.
      *
      * @param string $table
+     * @return array
+     */
+    public function getIndexAlias(string $table): array
+    {
+        $alias = $this->_alias($table, '', 'get');
+        if (isset($alias[$table])) {
+            return array_keys($alias[$table]['aliases']);
+        }
+        return [];
+    }
+
+     /**
+     * Alias basic operator.
+     *
+     * @param  string $table
+     * @param  string $alias
+     * @param  string $action put|exists|delete
      * @return void
      */
-    public function getIndexAlias(string $table)
+    protected function _alias(string $table, string $alias, string $action)
     {
-        $body = $this->build(tap($this->createBlueprint($table), function ($blueprint) {
-            $blueprint->getIndexAlias();
+        $body = $this->build(tap($this->createBlueprint($table), function (Blueprint $blueprint) use ($alias) {
+            $blueprint->alias($alias);
         }));
 
-        return $this->connection->alias('get', $body);
+        return $this->connection->alias($action, $body);
     }
+
 
     /**
      * Toggle alias of old index to new index. (old->new)
@@ -94,7 +96,7 @@ trait Alias
     {
         $blueprint = $this->createBlueprint($old);
         $body['actions'][]['remove'] = [
-            'index' => $blueprint->getTab∂le(), 'alias' => $alias
+            'index' => $blueprint->getTable(), 'alias' => $alias
         ];
 
         $blueprint = $this->createBlueprint($new);
