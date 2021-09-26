@@ -13,7 +13,7 @@ trait Alias
      */
     public function alias(string $table, string $alias)
     {
-        return $this->_alias(table, $alias, 'put');
+        return $this->_alias($table, $alias, 'put');
     }
 
     /**
@@ -25,7 +25,7 @@ trait Alias
      */
     public function existsAlias(string $table, string $alias)
     {
-        return $this->_alias(table, $alias, 'exists');
+        return $this->_alias($table, $alias, 'exists');
     }
 
     /**
@@ -37,7 +37,7 @@ trait Alias
      */
     public function dropAlias(string $table, string $alias)
     {
-        return $this->_alias(table, $alias, 'delete');
+        return $this->_alias($table, $alias, 'delete');
     }
    
     /**
@@ -94,11 +94,13 @@ trait Alias
      */
     public function toggleAlias(string $alias, string $old, string $new)
     {
-        $blueprint = $this->createBlueprint($old);
-        $body['actions'][]['remove'] = [
-            'index' => $blueprint->getTable(), 'alias' => $alias
-        ];
-
+        if ($old) {
+            $blueprint = $this->createBlueprint($old);
+            $body['actions'][]['remove'] = [
+                'index' => $blueprint->getTable(), 'alias' => $alias
+            ];
+        }
+        
         $blueprint = $this->createBlueprint($new);
         $body['actions'][]['add'] = [
             'index' => $blueprint->getTable(), 'alias' => $alias

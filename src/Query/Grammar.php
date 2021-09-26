@@ -200,7 +200,7 @@ class Grammar
     protected function whereLike(Builder $query, array $where): array
     {
         $type = $this->getType('like');
-        $meta = $this->compileMeta($where['column'], $where['value'], 'match');
+        $meta = $this->compileMeta($where['column'], $where['value'], 'like');
         return compact('type', 'meta');
     }
 
@@ -269,7 +269,7 @@ class Grammar
             return ['range' => [$column => [$this->range[$op] => $value]]];
         }
 
-        if ($op == 'match') {
+        if ($op == 'like') {
             return ['match' => [$column => $value]];
         }
 

@@ -10,11 +10,18 @@ use Illuminate\Pagination\Paginator;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Collection;
 use InvalidArgumentException;
+use Starme\LaravelEs\ConnectionInterface;
 
 class Builder
 {
+    /**
+     * @var \Starme\LaravelEs\ConnectionInterface
+     */
     protected $connection;
 
+    /**
+     * @var Grammar
+     */
     protected $grammar;
 
     /**
@@ -102,7 +109,7 @@ class Builder
      * @param $connection
      * @param $grammar
      */
-    public function __construct($connection, $grammar)
+    public function __construct(ConnectionInterface $connection, $grammar)
     {
         $this->connection = $connection;
         $this->grammar = $grammar;
@@ -223,6 +230,11 @@ class Builder
     {
         call_user_func($callback, $query = $this->forNestedWhere());
 
+        if ($boolean == 'or' && count($query->wheres) == 1) {
+            $where = $query->wheres[0];
+            return $this->where($where['column'], strtolower($where['type']), $where['value']);
+        }
+
         return $this->addNestedWhereQuery($query, $boolean);
     }
 
@@ -237,6 +249,7 @@ class Builder
     {
         if (count($query->wheres)) {
             $type = 'Nested';
+
             $this->wheres[] = compact('type', 'query', 'boolean');
         }
         return $this;
