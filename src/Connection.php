@@ -223,8 +223,10 @@ class Connection implements ConnectionInterface
      * @params array $params
      * @throws \Starme\LaravelEs\Exceptions\QueryException
      */
-    public function bulk($params)
+    public function bulk($params, $logEnable=true)
     {
+        $this->loggingQueries = $logEnable;
+        
         return $this->run('bulk', $params);
     }
 
@@ -234,8 +236,10 @@ class Connection implements ConnectionInterface
      * @params array $params
      * @throws \Starme\LaravelEs\Exceptions\QueryException
      */
-    public function insert($params)
+    public function insert($params, $logEnable=true)
     {
+        $this->loggingQueries = $logEnable;
+
         return $this->run('index', $params);
     }
 
@@ -245,11 +249,13 @@ class Connection implements ConnectionInterface
      * @params array $params
      * @throws \Starme\LaravelEs\Exceptions\QueryException
      */
-    public function update($params, $by_query=false)
+    public function update($params, $by_query=false, $logEnable=true)
     {
         if(isset($this->config['update_retry'])) {
             $params['retry_on_conflict'] = intval($this->config['update_retry']);
         }
+
+        $this->loggingQueries = $logEnable;
 
         return $this->run(
             $by_query ? 'updateByQuery' : 'update',
@@ -263,8 +269,10 @@ class Connection implements ConnectionInterface
      * @params array $params
      * @throws \Starme\LaravelEs\Exceptions\QueryException
      */
-    public function delete($params)
+    public function delete($params, $logEnable=true)
     {
+        $this->loggingQueries = $logEnable;
+
         return $this->run('deleteByQuery', $params);
     }
 
@@ -397,9 +405,9 @@ class Connection implements ConnectionInterface
     {
         $this->event(new Events\QueryExecuted($method, $queries, $time, $this));
 
-        if ($this->loggingQueries) {
-            $this->queryLog[] = compact('method', 'queries', 'time');
-        }
+        // if ($this->loggingQueries) {
+        //     $this->queryLog[] = compact('method', 'queries', 'time');
+        // }
     }
 
     /**

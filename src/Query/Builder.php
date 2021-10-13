@@ -105,6 +105,11 @@ class Builder
     public $refresh;
 
     /**
+     * @var bool
+     */
+    public $logEnable = true;
+
+    /**
      * Builder constructor.
      * @param $connection
      * @param $grammar
@@ -948,6 +953,13 @@ class Builder
         return $this;
     }
 
+    public function logEnable(bool $enable=true): Builder
+    {
+        $this->logEnable = $enable;
+
+        return $this;
+    }
+
     /**
      * Insert new records into the database.
      *
@@ -960,7 +972,7 @@ class Builder
         // the results. We will need to also flatten these bindings before running
         // the query so they are all in one huge, flattened array for execution.
         return $this->connection->bulk(
-            $this->grammar->compileBatchInsert($this, $values)
+            $this->grammar->compileBatchInsert($this, $values), $this->logEnable
         );
     }
 
@@ -976,7 +988,7 @@ class Builder
         // the results. We will need to also flatten these bindings before running
         // the query so they are all in one huge, flattened array for execution.
         return $this->connection->bulk(
-            $this->grammar->compileBatchUpdate($this, $values)
+            $this->grammar->compileBatchUpdate($this, $values), $this->logEnable
         );
     }
 
@@ -1020,7 +1032,7 @@ class Builder
         // the query so they are all in one huge, flattened array for execution.
         try {
             return $this->connection->insert(
-                $this->grammar->compileInsert($this, $values)
+                $this->grammar->compileInsert($this, $values), $this->logEnable
             );
         } catch (\Exception $e) {
             throw new \Exception($e->getMessage(), $e->getCode(), $e);
@@ -1036,7 +1048,7 @@ class Builder
     public function update(array $values): array
     {
         $params = $this->grammar->compileUpdate($this, $values);
-        $result = $this->connection->update($params, $this->wheres);
+        $result = $this->connection->update($params, $this->wheres, $this->logEnable);
         return ['total'=>$result['total'], 'updated'=>$result['updated']];
     }
 
@@ -1056,7 +1068,7 @@ class Builder
         }
 
         return $this->connection->delete(
-            $this->grammar->compileDelete($this)
+            $this->grammar->compileDelete($this), $this->logEnable
         );
     }
 
