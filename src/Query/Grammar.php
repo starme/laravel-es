@@ -24,6 +24,7 @@ class Grammar
     protected $selectComponents = [
         'aggregate',
         'columns',
+        'distinct',
         'index',
         'type',
         'refresh',
@@ -82,7 +83,19 @@ class Grammar
      */
     protected function compileColumns(Builder $query, array $columns): array
     {
-        return ['_source' => $columns, 'collapse' => $query->distinct ?: ''];
+        return ['_source' => $columns];
+    }
+
+    /**
+     * Compile the "distinct *" portion of the query.
+     *
+     * @param \Starme\LaravelEs\Query\Builder $query
+     * @param array $columns
+     * @return array
+     */
+    protected function compileDistinct(Builder $query, $field): array
+    {
+        return ['collapse' => array_filter(compact('field'))];
     }
 
     /**
@@ -507,6 +520,9 @@ class Grammar
         }
         if (isset($segments['orders'])) {
             $segments['orders'] = ['body'=> $segments['orders']];
+        }
+        if (isset($segments['distinct'])) {
+            $segments['distinct'] = ['body'=> $segments['distinct']];
         }
         return array_merge_recursive(...array_values($segments));
     }
