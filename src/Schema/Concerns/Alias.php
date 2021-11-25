@@ -95,9 +95,9 @@ trait Alias
     public function toggleAlias(string $alias, string $old, string $new)
     {
         if ($old) {
-            $blueprint = $this->createBlueprint($old);
+            // 旧的索引不用再次拼装prefix, Index::getAlias之后已经包含了prefix
             $body['actions'][]['remove'] = [
-                'index' => $blueprint->getTable(), 'alias' => $alias
+                'index' => $old, 'alias' => $alias
             ];
         }
         
