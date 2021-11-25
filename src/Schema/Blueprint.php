@@ -257,7 +257,7 @@ class Blueprint
      */
     public function getTable(): string
     {
-        if ( ! $this-table) {
+        if ( ! $this->table) {
             return "";
         }
         return $this->prefix . $this->table;
