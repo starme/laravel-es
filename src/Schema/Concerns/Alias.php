@@ -9,7 +9,7 @@ trait Alias
      *
      * @param string $table
      * @param string $alias
-     * @return void
+     * @return array
      */
     public function alias(string $table, string $alias)
     {
@@ -21,7 +21,7 @@ trait Alias
      *
      * @param string $table
      * @param string $alias
-     * @return void
+     * @return bool
      */
     public function existsAlias(string $table, string $alias)
     {
@@ -33,7 +33,7 @@ trait Alias
      *
      * @param string $table
      * @param string $alias
-     * @return void
+     * @return array
      */
     public function dropAlias(string $table, string $alias)
     {
@@ -72,7 +72,7 @@ trait Alias
      * @param  string $table
      * @param  string $alias
      * @param  string $action put|exists|delete
-     * @return void
+     * @return mixed
      */
     protected function _alias(string $table, string $alias, string $action)
     {
@@ -90,7 +90,7 @@ trait Alias
      * @param string $alias
      * @param string $old old index name.
      * @param string $new new index name.
-     * @return void
+     * @return array
      */
     public function toggleAlias(string $alias, string $old, string $new)
     {
