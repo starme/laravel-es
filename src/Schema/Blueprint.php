@@ -257,6 +257,9 @@ class Blueprint
      */
     public function getTable(): string
     {
+        if ( ! $this-table) {
+            return "";
+        }
         return $this->prefix . $this->table;
     }
 
@@ -267,6 +270,9 @@ class Blueprint
      */
     public function warpAlias($alias): string
     {
+        if ( ! $alias) {
+            return "";
+        }
         return $this->prefix . $alias;
     }
 

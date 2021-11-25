@@ -95,18 +95,19 @@ trait AggregationGrammar
 
     protected function compileAggFilters(Builder $query): array
     {
-        $wheres = $this->compileRaw($this->compileWheres($query));
-        $filter = [];
-        if (isset($wheres['bool'])) {
-            foreach ($wheres['bool'] as $type => $where) {
-                // if($type == 'filter') {
-                if(in_array($type, ['filter', 'must'])) {
-                    $filter = head($where);
-                    continue;
-                }
-                $filter = array_merge($filter, $where);
-            }
-        }
+        //未找到这么处理的原因...
+        $filter = $this->compileRaw($this->compileWheres($query));
+        // $filter = [];
+        // if (isset($wheres['bool'])) {
+        //     foreach ($wheres['bool'] as $type => $where) {
+        //         // if($type == 'filter') {
+        //         if(in_array($type, ['filter', 'must'])) {
+        //             $filter = head($where);
+        //             continue;
+        //         }
+        //         $filter = array_merge($filter, $where);
+        //     }
+        // }
         $aggs = $this->compileAggregate($query, $query->aggregate);
         return compact('filter', 'aggs');
     }
