@@ -48,17 +48,23 @@ class Grammar
         return $this->concatenate($this->compileComponents($query));
     }
 
+    public function compileCount(Builder $query): array
+    {
+        return $this->concatenate($this->compileComponents($query, ['index', 'type', 'wheres']));
+    }
+
     /**
      * Compile the components necessary for a select clause.
      *
      * @param \Starme\LaravelEs\Query\Builder $query
      * @return array
      */
-    protected function compileComponents(Builder $query): array
+    protected function compileComponents(Builder $query, array $components=[]): array
     {
         $sql = [];
+        $components = $components ?: $this->selectComponents;
 
-        foreach ($this->selectComponents as $component) {
+        foreach ($components as $component) {
             if (isset($query->$component)) {
                 $method = 'compile'.ucfirst($component);
 

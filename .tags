@@ -1,0 +1,631 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.8	//
+Blueprint	src/Schema/Blueprint.php	/^class Blueprint$/;"	c
+Builder	src/Query/Builder.php	/^class Builder$/;"	c
+Builder	src/Schema/Builder.php	/^class Builder$/;"	c
+ColumnDefinition	src/Schema/ColumnDefinition.php	/^class ColumnDefinition extends Fluent$/;"	c
+Connection	src/Connection.php	/^class Connection implements ConnectionInterface$/;"	c
+ConnectionInterface	src/ConnectionInterface.php	/^interface ConnectionInterface$/;"	i
+ConnectionResolver	src/ConnectionResolver.php	/^class ConnectionResolver implements ConnectionResolverInterface$/;"	c
+ConnectionResolverInterface	src/ConnectionResolverInterface.php	/^interface ConnectionResolverInterface$/;"	i
+DropTemplate	src/Schema/Concerns/Template.php	/^    public function DropTemplate(string $table, string $alias)$/;"	f
+ES	src/Facades/ES.php	/^class ES extends Facade$/;"	c
+ElasticIndexTest	tests/Elasticsearch/ElasticIndexTest.php	/^class ElasticIndexTest extends TestCase$/;"	c
+ElasticModelTest	tests/Elasticsearch/ElasticModelTest.php	/^class ElasticModelTest extends TestCase$/;"	c
+ElasticTest	tests/Elasticsearch/ElasticTest.php	/^class ElasticTest extends TestCase$/;"	c
+ElasticsearchServiceProvider	src/ElasticsearchServiceProvider.php	/^class ElasticsearchServiceProvider extends ServiceProvider$/;"	c
+Grammar	src/Query/Grammar.php	/^class Grammar$/;"	c
+Grammar	src/Schema/Grammar.php	/^class Grammar$/;"	c
+Index	src/Facades/Index.php	/^class Index extends Facade$/;"	c
+IndexNotFound	src/Exceptions/IndexNotFound.php	/^class IndexNotFound extends \\Exception$/;"	c
+Model	src/Eloquent/Model.php	/^abstract class Model implements ArrayAccess, JsonSerializable$/;"	c
+QueryException	src/Exceptions/QueryException.php	/^class QueryException extends \\Exception$/;"	c
+QueryExecuted	src/Events/QueryExecuted.php	/^class QueryExecuted$/;"	c
+TestModel	tests/Elasticsearch/ElasticModelTest.php	/^class TestModel extends Model$/;"	c
+__call	src/ConnectionResolver.php	/^    public function __call(string $method, array $parameters)$/;"	f
+__call	src/Eloquent/Model.php	/^    public function __call(string $method, array $parameters)$/;"	f
+__callStatic	src/Eloquent/Model.php	/^    public static function __callStatic(string $method, array $parameters)$/;"	f
+__construct	src/Connection.php	/^    public function __construct($config, LoggerInterface $logger)$/;"	f
+__construct	src/ConnectionResolver.php	/^    public function __construct($app)$/;"	f
+__construct	src/Eloquent/Model.php	/^    public function __construct(array $attributes = [])$/;"	f
+__construct	src/Events/QueryExecuted.php	/^    public function __construct(string $method, array $queries, float $time, $connection)$/;"	f
+__construct	src/Exceptions/IndexNotFound.php	/^    public function __construct(string $method, string $index)$/;"	f
+__construct	src/Exceptions/QueryException.php	/^    public function __construct(string $method, array $queries, Throwable $previous)$/;"	f
+__construct	src/Query/Builder.php	/^    public function __construct($connection, $grammar)$/;"	f
+__construct	src/Schema/Blueprint.php	/^    public function __construct(string $table, Closure $callback = null, $prefix = '')$/;"	f
+__construct	src/Schema/Builder.php	/^    public function __construct(Connection $connection)$/;"	f
+__construct	tests/Elasticsearch/ElasticModelTest.php	/^    public function __construct(?string $name = null, array $data = [], $dataName = '')$/;"	f
+__get	src/Eloquent/Model.php	/^    public function __get(string $key)$/;"	f
+__isset	src/Eloquent/Model.php	/^    public function __isset(string $key)$/;"	f
+__set	src/Eloquent/Model.php	/^    public function __set(string $key, $value)$/;"	f
+__unset	src/Eloquent/Model.php	/^    public function __unset(string $key)$/;"	f
+_alias	src/Schema/Concerns/Alias.php	/^    protected function _alias(string $table, string $alias, string $action)$/;"	f
+addArrayOfWheres	src/Query/Builder.php	/^    protected function addArrayOfWheres(array $column, $method = 'where'): Builder$/;"	f
+addColumn	src/Schema/Concerns/Columns.php	/^    public function addColumn(string $type, string $column, array $parameters = []): ColumnDefinition$/;"	f
+addCommand	src/Schema/Blueprint.php	/^    protected function addCommand(string $name, $command=[]): Fluent$/;"	f
+addConnection	src/ConnectionResolver.php	/^    public function addConnection(string $name, ConnectionInterface $connection)$/;"	f
+addNestedWhereQuery	src/Query/Builder.php	/^    public function addNestedWhereQuery(Builder $query, $boolean): Builder$/;"	f
+aggregate	src/Query/Builder.php	/^        $aggregate = compact('function', 'columns', 'queries');$/;"	v
+aggregate	src/Query/Builder.php	/^        \/\/ $this->aggregate = array_merge_recursive($this->aggregate, $aggregate);$/;"	v
+aggregate	src/Query/Builder.php	/^    public $aggregate = [];$/;"	v
+aggregate	src/Query/Builder.php	/^    public function aggregate(string $function, $columns = ['*'])$/;"	f
+aggs	src/Query/Grammars/AggregationGrammar.php	/^                $aggs = array_merge($aggs, $normal);$/;"	v
+aggs	src/Query/Grammars/AggregationGrammar.php	/^            $aggs = array_merge($aggs, $this->$method($aggregate['columns'], $aggregate['queries']));$/;"	v
+aggs	src/Query/Grammars/AggregationGrammar.php	/^            $aggs = array_merge_recursive($aggs, $this->compileTerms([$column], null));$/;"	v
+aggs	src/Query/Grammars/AggregationGrammar.php	/^        $aggs = $this->compileAggregate($query, $query->aggregate);$/;"	v
+aggs	src/Query/Grammars/AggregationGrammar.php	/^        $aggs = [];$/;"	v
+alias	src/Connection.php	/^    public function alias(string $type, array $params)$/;"	f
+alias	src/Query/Grammars/AggregationGrammar.php	/^                $alias = $this->defaultAggAlias('terms', $column);$/;"	v
+alias	src/Schema/Blueprint.php	/^    public function alias($name): Fluent$/;"	f
+alias	src/Schema/Concerns/Alias.php	/^        $alias = $this->_alias($table, '', 'get');$/;"	v
+alias	src/Schema/Concerns/Alias.php	/^    public function alias(string $table, string $alias)$/;"	f
+alias	src/Schema/Concerns/Columns.php	/^    public function alias(string $column): ColumnDefinition$/;"	f
+alterTemplate	src/Schema/Concerns/Template.php	/^    public function alterTemplate(string $table, Closure $callback)$/;"	f
+app	src/ConnectionResolver.php	/^        $this->app = $app;$/;"	v
+app	src/ConnectionResolver.php	/^    protected $app;$/;"	v
+array	src/Schema/Concerns/Columns.php	/^    public function array(string $column): ColumnDefinition$/;"	f
+attr	src/Query/Grammar.php	/^        $attr = $this->concatenate($this->compileComponents($query));$/;"	v
+attributes	src/Eloquent/Concerns/HasAttributes.php	/^        $this->attributes = $attributes;$/;"	v
+attributes	src/Eloquent/Concerns/HasAttributes.php	/^    protected $attributes = [];$/;"	v
+attributes	src/Eloquent/Model.php	/^    public function __construct(array $attributes = [])$/;"	v
+average	src/Query/Builder.php	/^    public function average(string $column)$/;"	f
+avg	src/Query/Builder.php	/^    public function avg(string $column)$/;"	f
+batchInsert	src/Query/Builder.php	/^    public function batchInsert(array $values): array$/;"	f
+batchUpdate	src/Query/Builder.php	/^    public function batchUpdate(array $values): array$/;"	f
+bigInteger	src/Schema/Concerns/Columns.php	/^    public function bigInteger(string $column): ColumnDefinition$/;"	f
+binary	src/Schema/Concerns/Columns.php	/^    public function binary(string $column): ColumnDefinition$/;"	f
+bindings	src/Facades/ES.php	/^ * @method static array select(string $query, array $bindings = [], bool $useReadPdo = true)$/;"	v
+bindings	src/Facades/ES.php	/^ * @method static bool insert(string $query, array $bindings = [])$/;"	v
+bindings	src/Facades/ES.php	/^ * @method static int delete(string $query, array $bindings = [])$/;"	v
+bindings	src/Facades/ES.php	/^ * @method static int update(string $query, array $bindings = [])$/;"	v
+blueprint	src/Schema/Concerns/Alias.php	/^            $blueprint = $this->createBlueprint($old);$/;"	v
+blueprint	src/Schema/Concerns/Alias.php	/^        $blueprint = $this->createBlueprint($new);$/;"	v
+body	src/Query/Grammars/Warp.php	/^            $body = $columns;$/;"	v
+body	src/Schema/Builder.php	/^        $body = $this->build(tap($this->createBlueprint($table), function ($blueprint) use ($callback) {$/;"	v
+body	src/Schema/Builder.php	/^        $body = $this->build(tap($this->createBlueprint($table), function ($blueprint) use ($target) {$/;"	v
+body	src/Schema/Builder.php	/^        $body = $this->build(tap($this->createBlueprint($table), function ($blueprint) {$/;"	v
+body	src/Schema/Builder.php	/^        $body = array_diff_key($body, compact('index'));$/;"	v
+body	src/Schema/Concerns/Alias.php	/^        $body = $this->build(tap($this->createBlueprint($table), function (Blueprint $blueprint) use ($alias) {$/;"	v
+body	src/Schema/Concerns/Template.php	/^        $body = $this->build(tap($this->createBlueprint($table), function ($blueprint) use ($alias) {$/;"	v
+body	src/Schema/Concerns/Template.php	/^        $body = $this->build(tap($this->createBlueprint($table), function (Blueprint $blueprint) use ($callback) {$/;"	v
+body	src/Schema/Concerns/Template.php	/^        $body = array_diff_key($body, compact('name'));$/;"	v
+boolean	src/Query/Builder.php	/^    public function whereNested(Closure $callback, $boolean='and'): Builder$/;"	v
+boolean	src/Schema/Concerns/Columns.php	/^    public function boolean(string $column): ColumnDefinition$/;"	f
+boot	src/ElasticsearchServiceProvider.php	/^    public function boot()$/;"	f
+boot	src/Eloquent/Model.php	/^    protected static function boot()$/;"	f
+bootIfNotBooted	src/Eloquent/Model.php	/^    protected function bootIfNotBooted()$/;"	f
+bootTraits	src/Eloquent/Model.php	/^    protected static function bootTraits()$/;"	f
+booted	src/Eloquent/Model.php	/^        $booted = [];$/;"	v
+booted	src/Eloquent/Model.php	/^    protected static $booted = [];$/;"	v
+booted	src/Eloquent/Model.php	/^    protected static function booted()$/;"	f
+booting	src/Eloquent/Model.php	/^    protected static function booting()$/;"	f
+build	src/Schema/Blueprint.php	/^    public function build($grammar): array$/;"	f
+build	src/Schema/Builder.php	/^    protected function build(Blueprint $blueprint): array$/;"	f
+build_script	src/Query/Grammars/Warp.php	/^    public function columnizeUpdate(array $columns, $build_script=true): array$/;"	v
+builder	src/Connection.php	/^        $builder = ClientBuilder::create();$/;"	v
+bulk	src/Connection.php	/^    public function bulk($params)$/;"	f
+by_query	src/Connection.php	/^    public function update($params, $by_query=false)$/;"	v
+by_query	src/ConnectionInterface.php	/^    public function update(array $params, $by_query=false);$/;"	v
+callback	src/Connection.php	/^            $callback = function ($method, $queries) {$/;"	v
+callback	src/Connection.php	/^    protected function run(string $method, array $queries, Closure $callback = null)$/;"	v
+callback	src/Query/Builder.php	/^    public function groupByRaw(string $group, $callback=null): Builder$/;"	v
+callback	src/Schema/Blueprint.php	/^    public function __construct(string $table, Closure $callback = null, $prefix = '')$/;"	v
+callback	src/Schema/Builder.php	/^    protected function createBlueprint(string $table, Closure $callback = null): Blueprint$/;"	v
+class	src/Eloquent/Model.php	/^        $class = static::class;$/;"	v
+clearScroll	src/Query/Builder.php	/^    public function clearScroll(string $scrollId = '')$/;"	f
+cloneIndex	src/Schema/Blueprint.php	/^    public function cloneIndex(string $target)$/;"	f
+cloneIndex	src/Schema/Builder.php	/^    public function cloneIndex(string $table, string $target)$/;"	f
+code	src/Exceptions/IndexNotFound.php	/^        $this->code = 404;$/;"	v
+code	src/Exceptions/QueryException.php	/^        $this->code = $previous->getCode();$/;"	v
+collation	src/Schema/Blueprint.php	/^    public $collation;$/;"	v
+column	src/Schema/Concerns/Columns.php	/^        $column = new ColumnDefinition(array_merge(compact('type', 'column'), $parameters));$/;"	v
+columnizeInsert	src/Query/Grammars/Warp.php	/^    public function columnizeInsert(array $body): array$/;"	f
+columnizeUpdate	src/Query/Grammars/Warp.php	/^    public function columnizeUpdate(array $columns, $build_script=true): array$/;"	f
+columns	src/Query/Builder.php	/^            $this->columns = $columns;$/;"	v
+columns	src/Query/Builder.php	/^        $this->columns = $original;$/;"	v
+columns	src/Query/Builder.php	/^        $this->columns = [];$/;"	v
+columns	src/Query/Builder.php	/^        $this->columns = is_array($columns) ? $columns : func_get_args();$/;"	v
+columns	src/Query/Builder.php	/^    public $columns;$/;"	v
+columns	src/Query/Builder.php	/^    public function aggregate(string $function, $columns = ['*'])$/;"	v
+columns	src/Query/Builder.php	/^    public function find($id, $columns = ['*']): ?array$/;"	v
+columns	src/Query/Builder.php	/^    public function paginate($perPage = 15, $columns = ['*'], $pageName = 'page', $page = null)$/;"	v
+columns	src/Schema/Grammar.php	/^        $this->columns = array_merge($this->columns, $this->warpColumns($command));$/;"	v
+columns	src/Schema/Grammar.php	/^    protected $columns = [];$/;"	v
+command	src/Schema/Blueprint.php	/^        $this->commands[] = $command = $this->createCommand($name, $command);;$/;"	v
+command	src/Schema/Blueprint.php	/^    protected function addCommand(string $name, $command=[]): Fluent$/;"	v
+command	src/Schema/Blueprint.php	/^    protected function createCommand(string $name, $command = []): Fluent$/;"	v
+commands	src/Schema/Blueprint.php	/^    protected $commands = [];$/;"	v
+compileAggFilters	src/Query/Grammars/AggregationGrammar.php	/^    protected function compileAggFilters(Builder $query): array$/;"	f
+compileAggregate	src/Query/Grammars/AggregationGrammar.php	/^    public function compileAggregate(Builder $query, array $aggregates): array$/;"	f
+compileAlias	src/Schema/Grammar.php	/^    public function compileAlias($blueprint, $command): array$/;"	f
+compileAvg	src/Query/Grammars/AggregationGrammar.php	/^    protected function compileAvg($columns, $queries): array$/;"	f
+compileBatchInsert	src/Query/Grammar.php	/^    public function compileBatchInsert(Builder $query, array $values): array$/;"	f
+compileBatchUpdate	src/Query/Grammar.php	/^    public function compileBatchUpdate(Builder $query, array $values): array$/;"	f
+compileBetween	src/Query/Grammar.php	/^    protected function compileBetween($column, $value): array$/;"	f
+compileBulk	src/Query/Grammars/AggregationGrammar.php	/^    protected function compileBulk($columns, $queries): array$/;"	f
+compileCloneIndex	src/Schema/Grammar.php	/^    public function compileCloneIndex($blueprint, $command): array$/;"	f
+compileColumns	src/Query/Grammar.php	/^    protected function compileColumns(Builder $query, array $columns): array$/;"	f
+compileColumns	src/Schema/Grammar.php	/^    public function compileColumns($blueprint, $command): array$/;"	f
+compileComponents	src/Query/Grammar.php	/^    protected function compileComponents(Builder $query): array$/;"	f
+compileCreateAlias	src/Schema/Grammar.php	/^    \/\/ public function compileCreateAlias($blueprint, $command): array$/;"	f
+compileCreateIndex	src/Schema/Grammar.php	/^    \/\/ public function compileCreateIndex($blueprint, $command): array$/;"	f
+compileDelete	src/Query/Grammar.php	/^    public function compileDelete(Builder $query): array$/;"	f
+compileDropAlias	src/Schema/Grammar.php	/^    \/\/ public function compileDropAlias($blueprint, $command): array$/;"	f
+compileDropIndex	src/Schema/Grammar.php	/^    \/\/ public function compileDropIndex($blueprint, $command): array$/;"	f
+compileExists	src/Query/Grammar.php	/^    protected function compileExists($column): array$/;"	f
+compileExistsAlias	src/Schema/Grammar.php	/^    \/\/ public function compileExistsAlias($blueprint, $command): array$/;"	f
+compileExistsIndex	src/Schema/Grammar.php	/^    \/\/ public function compileExistsIndex($blueprint, $command): array$/;"	f
+compileGetAlias	src/Schema/Grammar.php	/^    public function compileGetAlias($blueprint, $command): array$/;"	f
+compileGetIndexAlias	src/Schema/Grammar.php	/^    \/\/ public function compileGetIndexAlias($blueprint, $command): array$/;"	f
+compileIndex	src/Query/Grammar.php	/^    protected function compileIndex(Builder $query, string $index): array$/;"	f
+compileIndex	src/Schema/Grammar.php	/^    public function compileIndex($blueprint, $command): array$/;"	f
+compileInsert	src/Query/Grammar.php	/^    public function compileInsert(Builder $query, array $values): array$/;"	f
+compileLimit	src/Query/Grammar.php	/^    protected function compileLimit(Builder $query, int $limit): array$/;"	f
+compileMax	src/Query/Grammars/AggregationGrammar.php	/^    protected function compileMax($columns, $queries): array$/;"	f
+compileMeta	src/Query/Grammar.php	/^    protected function compileMeta($column, $value, $op=null): array$/;"	f
+compileMin	src/Query/Grammars/AggregationGrammar.php	/^    protected function compileMin($columns, $queries): array$/;"	f
+compileOffset	src/Query/Grammar.php	/^    protected function compileOffset(Builder $query, int $offset): array$/;"	f
+compileOrders	src/Query/Grammar.php	/^    protected function compileOrders(Builder $query, array $sort): array$/;"	f
+compileOrdersToArray	src/Query/Grammar.php	/^    protected function compileOrdersToArray(Builder $query, array $orders): array$/;"	f
+compilePutTemplate	src/Schema/Grammar.php	/^    public function compilePutTemplate($blueprint, $command): array$/;"	f
+compileQueries	src/Query/Grammars/AggregationGrammar.php	/^    protected function compileQueries($columns, $queries): array$/;"	f
+compileRaw	src/Query/Grammar.php	/^    protected function compileRaw(array $wheres, $is_nested=false): array$/;"	f
+compileRefresh	src/Query/Grammar.php	/^    protected function compileRefresh(Builder $query, bool $refresh): array$/;"	f
+compileScript	src/Query/Grammar.php	/^    public function compileScript(array $params): array$/;"	f
+compileScroll	src/Query/Grammar.php	/^    protected function compileScroll(Builder $query, array $scroll): array$/;"	f
+compileSelect	src/Query/Grammar.php	/^    public function compileSelect(Builder $query): array$/;"	f
+compileSetting	src/Schema/Grammar.php	/^    public function compileSetting($blueprint, $command): array$/;"	f
+compileSimpleAgg	src/Query/Grammars/AggregationGrammar.php	/^    protected function compileSimpleAgg($type, $columns): array$/;"	f
+compileSum	src/Query/Grammars/AggregationGrammar.php	/^    protected function compileSum($columns, $queries): array$/;"	f
+compileTemplateMatch	src/Schema/Grammar.php	/^    public function compileTemplateMatch($blueprint, $command): array$/;"	f
+compileTemplateOrder	src/Schema/Grammar.php	/^    public function compileTemplateOrder($blueprint, $command): array$/;"	f
+compileTerms	src/Query/Grammars/AggregationGrammar.php	/^    protected function compileTerms($columns, $queries): array$/;"	f
+compileType	src/Query/Grammar.php	/^    protected function compileType(Builder $query, string $type): array$/;"	f
+compileUpdate	src/Query/Grammar.php	/^    public function compileUpdate(Builder $query, array $values): array$/;"	f
+compileUpsert	src/Query/Grammar.php	/^    public function compileUpsert(Builder $query, array $values, array $upsert=[]): array$/;"	f
+compileWheres	src/Query/Grammar.php	/^    public function compileWheres(Builder $query): array$/;"	f
+compileWheresToArray	src/Query/Grammar.php	/^    protected function compileWheresToArray(Builder $query): array$/;"	f
+concatenate	src/Query/Grammar.php	/^    protected function concatenate(array $segments): array$/;"	f
+config	src/Connection.php	/^        $this->config = $config;$/;"	v
+config	src/Connection.php	/^    protected $config = [];$/;"	v
+config	src/ConnectionResolver.php	/^        $config = $this->configuration($name);$/;"	v
+configuration	src/ConnectionResolver.php	/^    protected function configuration(string $name): array$/;"	f
+configure	src/ConnectionResolver.php	/^    protected function configure(Connection $connection, string $type): Connection$/;"	f
+connection	src/Connection.php	/^        $this->connection = $client;$/;"	v
+connection	src/Connection.php	/^        $this->connection = $this->getDefaultClient();$/;"	v
+connection	src/Connection.php	/^    protected $connection;$/;"	v
+connection	src/ConnectionResolver.php	/^        $connection = new Connection($/;"	v
+connection	src/ConnectionResolver.php	/^    public function connection($name = null): ConnectionInterface$/;"	f
+connection	src/ConnectionResolverInterface.php	/^    public function connection($name = null): ConnectionInterface;$/;"	f
+connection	src/Eloquent/Model.php	/^        $this->connection = $name;$/;"	v
+connection	src/Eloquent/Model.php	/^    protected $connection;$/;"	v
+connection	src/Events/QueryExecuted.php	/^        $this->connection = $connection;$/;"	v
+connection	src/Events/QueryExecuted.php	/^    public $connection;$/;"	v
+connection	src/Query/Builder.php	/^        $this->connection = $connection;$/;"	v
+connection	src/Query/Builder.php	/^    protected $connection;$/;"	v
+connection	src/Schema/Builder.php	/^        $this->connection = $connection;$/;"	v
+connection	src/Schema/Builder.php	/^    protected $connection;$/;"	v
+connections	src/ConnectionResolver.php	/^        $connections = $this->app['config']['es.connections'];$/;"	v
+connections	src/ConnectionResolver.php	/^    protected $connections = [];$/;"	v
+count	src/Connection.php	/^    public function count(array $params)$/;"	f
+count	src/Query/Builder.php	/^    public function count(): int$/;"	f
+create	src/Schema/Builder.php	/^    public function create(string $table, Closure $callback): array$/;"	f
+createBlueprint	src/Schema/Builder.php	/^    protected function createBlueprint(string $table, Closure $callback = null): Blueprint$/;"	f
+createCommand	src/Schema/Blueprint.php	/^    protected function createCommand(string $name, $command = []): Fluent$/;"	f
+createIndex	src/Schema/Blueprint.php	/^    public function createIndex()$/;"	f
+createTemplate	src/Schema/Concerns/Template.php	/^    public function createTemplate(string $table, Closure $callback)$/;"	f
+data	src/Query/Grammar.php	/^            $data = array_merge_recursive($/;"	v
+date	src/Schema/Concerns/Columns.php	/^    public function date(string $column): ColumnDefinition$/;"	f
+dd	src/Query/Builder.php	/^    public function dd(): array$/;"	f
+default	src/ConnectionResolver.php	/^        $this->default = $name;$/;"	v
+default	src/ConnectionResolver.php	/^    protected $default = 'default';$/;"	v
+default	src/Query/Builder.php	/^    public function unless($value, callable $callback, $default = null)$/;"	v
+default	src/Query/Builder.php	/^    public function unlessExists($value, callable $callback, $default = null)$/;"	v
+default	src/Query/Builder.php	/^    public function when($value, callable $callback, $default = null)$/;"	v
+default	src/Query/Builder.php	/^    public function whenExists($value, callable $callback, $default = null)$/;"	v
+defaultAggAlias	src/Query/Grammars/AggregationGrammar.php	/^    protected function defaultAggAlias($prefix, $name): string$/;"	f
+defaultAlias	src/Query/Grammars/Warp.php	/^    public function wrap($value, $defaultAlias = '')$/;"	v
+delete	src/Connection.php	/^    public function delete($params)$/;"	f
+delete	src/ConnectionInterface.php	/^    public function delete(array $params);$/;"	f
+delete	src/Query/Builder.php	/^    public function delete($id = null): array$/;"	f
+direction	src/Query/Builder.php	/^        $direction = strtolower($direction);$/;"	v
+direction	src/Query/Builder.php	/^    public function orderBy($column, $direction = 'asc'): Builder$/;"	v
+disableQueryLog	src/Connection.php	/^    public function disableQueryLog()$/;"	f
+disconnect	src/Connection.php	/^    public function disconnect()$/;"	f
+disconnect	src/ConnectionResolver.php	/^    public function disconnect($name = null)$/;"	f
+dispatcher	src/Eloquent/Model.php	/^    protected static $dispatcher;$/;"	v
+distinct	src/Query/Builder.php	/^        $this->distinct = $column;$/;"	v
+distinct	src/Query/Builder.php	/^    public $distinct;$/;"	v
+distinct	src/Query/Builder.php	/^    public function distinct($column): Builder$/;"	f
+double	src/Schema/Concerns/Columns.php	/^    public function double(string $column): ColumnDefinition$/;"	f
+drop	src/Schema/Builder.php	/^    public function drop(string $table): array$/;"	f
+dropAlias	src/Schema/Blueprint.php	/^    public function dropAlias($name): Fluent$/;"	f
+dropAlias	src/Schema/Concerns/Alias.php	/^    public function dropAlias(string $table, string $alias)$/;"	f
+dropIfExists	src/Schema/Builder.php	/^    public function dropIfExists(string $table): array$/;"	f
+dropIndex	src/Schema/Blueprint.php	/^    public function dropIndex()$/;"	f
+enableQueryLog	src/Connection.php	/^    public function enableQueryLog()$/;"	f
+event	src/Connection.php	/^    protected function event($event)$/;"	f
+events	src/Connection.php	/^        $this->events = $events;$/;"	v
+events	src/Connection.php	/^    protected $events;$/;"	v
+exists	src/Schema/Builder.php	/^    public function exists(string $table): bool$/;"	f
+existsAlias	src/Schema/Blueprint.php	/^    public function existsAlias($name): Fluent$/;"	f
+existsAlias	src/Schema/Concerns/Alias.php	/^    public function existsAlias(string $table, string $alias)$/;"	f
+existsIndex	src/Schema/Blueprint.php	/^    public function existsIndex()$/;"	f
+existsTemplate	src/Schema/Concerns/Template.php	/^    public function existsTemplate(string $table, string $alias)$/;"	f
+fill	src/Eloquent/Model.php	/^    public function fill(array $attributes): Model$/;"	f
+filter	src/Query/Grammar.php	/^    protected $filter = [];$/;"	v
+filter	src/Query/Grammars/AggregationGrammar.php	/^                    $filter = head($where);$/;"	v
+filter	src/Query/Grammars/AggregationGrammar.php	/^                $filter = array_merge($filter, $where);$/;"	v
+filter	src/Query/Grammars/AggregationGrammar.php	/^        $filter = [];$/;"	v
+find	src/Query/Builder.php	/^    public function find($id, $columns = ['*']): ?array$/;"	f
+first	src/Query/Builder.php	/^    public function first($columns = ['*']): ?array$/;"	f
+float	src/Schema/Concerns/Columns.php	/^    public function float(string $column): ColumnDefinition$/;"	f
+flushQueryLog	src/Connection.php	/^    public function flushQueryLog()$/;"	f
+forNestedWhere	src/Query/Builder.php	/^    public function forNestedWhere(): Builder$/;"	f
+forPage	src/Query/Builder.php	/^    public function forPage(int $page, $perPage = 15): Builder$/;"	f
+formatMessage	src/Exceptions/QueryException.php	/^    protected function formatMessage(array $queries, Throwable $previous): string$/;"	f
+fresh	src/ConnectionResolver.php	/^        $fresh = $this->makeConnection($name);$/;"	v
+from	src/Query/Builder.php	/^    public function from($name): Builder$/;"	f
+get	src/Query/Builder.php	/^    public function get($columns = ['*']): Collection$/;"	f
+getAlias	src/Schema/Blueprint.php	/^    public function getAlias($name): Fluent$/;"	f
+getAlias	src/Schema/Concerns/Alias.php	/^    public function getAlias(string $alias): array$/;"	f
+getAttribute	src/Eloquent/Concerns/HasAttributes.php	/^    public function getAttribute($offset)$/;"	f
+getAttributes	src/Eloquent/Concerns/HasAttributes.php	/^    public function getAttributes()$/;"	f
+getClient	src/Connection.php	/^    public function getClient(): Client$/;"	f
+getColumns	src/Schema/Blueprint.php	/^    public function getColumns(): array$/;"	f
+getCommands	src/Schema/Blueprint.php	/^    public function getCommands(): array$/;"	f
+getConfig	src/Connection.php	/^    public function getConfig(string $string)$/;"	f
+getConnection	src/Eloquent/Model.php	/^    public function getConnection(): Connection$/;"	f
+getConnection	src/Schema/Builder.php	/^    public function getConnection(): Connection$/;"	f
+getConnectionName	src/Eloquent/Model.php	/^    public function getConnectionName(): ?string$/;"	f
+getConnectionResolver	src/Eloquent/Model.php	/^    public static function getConnectionResolver(): Resolver$/;"	f
+getDateFormat	src/Query/Grammars/Warp.php	/^    public function getDateFormat(): string$/;"	f
+getDefaultClient	src/Connection.php	/^    protected function getDefaultClient(): Client$/;"	f
+getDefaultConnection	src/ConnectionResolver.php	/^    public function getDefaultConnection(): string$/;"	f
+getDefaultConnection	src/ConnectionResolverInterface.php	/^    public function getDefaultConnection(): string;$/;"	f
+getDefaultQueryGrammar	src/Connection.php	/^    protected function getDefaultQueryGrammar(): QueryGrammar$/;"	f
+getDefaultSchemaGrammar	src/Connection.php	/^    protected function getDefaultSchemaGrammar(): SchemaGrammar$/;"	f
+getElapsedTime	src/Connection.php	/^    protected function getElapsedTime(int $start): float$/;"	f
+getEvents	src/Connection.php	/^    public function getEvents()$/;"	f
+getFacadeAccessor	src/Facades/ES.php	/^    protected static function getFacadeAccessor(): string$/;"	f
+getFacadeAccessor	src/Facades/Index.php	/^    protected static function getFacadeAccessor(): string$/;"	f
+getIndex	src/Exceptions/IndexNotFound.php	/^    public function getIndex(): array$/;"	f
+getIndexAlias	src/Schema/Blueprint.php	/^    public function getIndexAlias(): Fluent$/;"	f
+getIndexAlias	src/Schema/Concerns/Alias.php	/^    public function getIndexAlias(string $table): array$/;"	f
+getMethod	src/Exceptions/IndexNotFound.php	/^    public function getMethod(): string$/;"	f
+getMethod	src/Exceptions/QueryException.php	/^    public function getMethod(): string$/;"	f
+getQueries	src/Exceptions/QueryException.php	/^    public function getQueries(): array$/;"	f
+getQueryGrammar	src/Connection.php	/^    public function getQueryGrammar(): QueryGrammar$/;"	f
+getQueryGrammar	src/ConnectionInterface.php	/^    public function getQueryGrammar(): QueryGrammar;$/;"	f
+getQueryLog	src/Connection.php	/^    public function getQueryLog(): array$/;"	f
+getSchemaBuilder	src/ConnectionInterface.php	/^\/\/    public function getSchemaBuilder()$/;"	f
+getSchemaGrammar	src/Connection.php	/^    public function getSchemaGrammar(): SchemaGrammar$/;"	f
+getTable	src/Eloquent/Model.php	/^    public function getTable(): string$/;"	f
+getTable	src/Schema/Blueprint.php	/^    public function getTable(): string$/;"	f
+getTablePrefix	src/Connection.php	/^    public function getTablePrefix(): string$/;"	f
+getTablePrefix	src/Query/Grammars/Warp.php	/^    public function getTablePrefix(): string$/;"	f
+getType	src/Query/Grammar.php	/^    protected function getType(string $operator): string$/;"	f
+glue	src/Query/Builder.php	/^    public function implode(string $column, $glue = ''): string$/;"	v
+grammar	src/Query/Builder.php	/^        $this->grammar = $grammar;$/;"	v
+grammar	src/Query/Builder.php	/^    protected $grammar;$/;"	v
+grammar	src/Schema/Builder.php	/^        $this->grammar = $connection->getSchemaGrammar();$/;"	v
+grammar	src/Schema/Builder.php	/^    protected $grammar;$/;"	v
+groupBy	src/Query/Builder.php	/^    public function groupBy(...$groups): Builder$/;"	f
+groupByBulk	src/Query/Builder.php	/^    public function groupByBulk(array $groups): Builder$/;"	f
+groupByNested	src/Query/Builder.php	/^    public function groupByNested(Closure $callback)$/;"	f
+groupByRaw	src/Query/Builder.php	/^    public function groupByRaw(string $group, $callback=null): Builder$/;"	f
+hasConnection	src/ConnectionResolver.php	/^    public function hasConnection(string $name): bool$/;"	f
+id	src/Query/Grammars/Warp.php	/^        $id = $body['id'] ?? "";$/;"	v
+id	src/Query/Grammars/Warp.php	/^        $id = $columns['id'] ?? "";$/;"	v
+implode	src/Query/Builder.php	/^    public function implode(string $column, $glue = ''): string$/;"	f
+index	src/Connection.php	/^    public function index(string $type, array $params)$/;"	f
+index	src/Exceptions/IndexNotFound.php	/^        $this->index = $index;$/;"	v
+index	src/Exceptions/IndexNotFound.php	/^    protected $index;$/;"	v
+index	src/Query/Builder.php	/^            $this->index = $name;$/;"	v
+index	src/Query/Builder.php	/^    public $index;$/;"	v
+index	src/Query/Grammar.php	/^        $index = $this->wrapTable($index);$/;"	v
+index	src/Schema/Blueprint.php	/^    public function index()$/;"	f
+index	src/Schema/Builder.php	/^        $index = $body['index'];$/;"	v
+index_patterns	src/Schema/Blueprint.php	/^    public function index_patterns(string $match)$/;"	f
+initializeTraits	src/Eloquent/Model.php	/^    protected function initializeTraits()$/;"	f
+inline	src/Query/Grammar.php	/^        $inline = "";$/;"	v
+insert	src/Connection.php	/^    public function insert($params)$/;"	f
+insert	src/ConnectionInterface.php	/^    public function insert(array $params);$/;"	f
+insert	src/Query/Builder.php	/^    public function insert(array $values): bool$/;"	f
+insertGetVersion	src/Query/Builder.php	/^    public function insertGetVersion(array $values): array$/;"	f
+integer	src/Schema/Concerns/Columns.php	/^    public function integer(string $column): ColumnDefinition$/;"	f
+invalidOperator	src/Query/Builder.php	/^    protected function invalidOperator(string $operator): bool$/;"	f
+invalidOperatorAndValue	src/Query/Builder.php	/^    protected function invalidOperatorAndValue(string $operator, $value): bool$/;"	f
+is_nested	src/Query/Grammar.php	/^    protected function compileRaw(array $wheres, $is_nested=false): array$/;"	v
+jsonSerialize	src/Eloquent/Concerns/HasAttributes.php	/^    public function jsonSerialize()$/;"	f
+jsonSerialize	src/Eloquent/Model.php	/^    public function jsonSerialize()$/;"	f
+key	src/Eloquent/Model.php	/^        foreach ($attributes as $key => $value) {$/;"	v
+key	src/Query/Builder.php	/^        foreach ($column as $key => $value) {$/;"	v
+key	src/Query/Builder.php	/^    public function pluck(string $column, $key = null): Collection$/;"	v
+key	src/Query/Grammar.php	/^        foreach ($params as $key=>$value) {$/;"	v
+key	tests/Elasticsearch/ElasticTest.php	/^\/\/                foreach (['1'=>'1', '2'=>'2'] as $key=>$value) {$/;"	v
+limit	src/Query/Builder.php	/^            $this->limit = $value;$/;"	v
+limit	src/Query/Builder.php	/^        $this->limit = 0;$/;"	v
+limit	src/Query/Builder.php	/^    public $limit;$/;"	v
+limit	src/Query/Builder.php	/^    public function limit(int $value): Builder$/;"	f
+listen	src/Connection.php	/^    public function listen(Closure $callback)$/;"	f
+logQuery	src/Connection.php	/^    public function logQuery(string $method, array $queries, $time = null)$/;"	f
+logger	src/Connection.php	/^        $this->logger = $logger;$/;"	v
+logger	src/Connection.php	/^    private $logger;$/;"	v
+logging	src/Connection.php	/^    public function logging(): bool$/;"	f
+loggingQueries	src/Connection.php	/^        $this->loggingQueries = false;$/;"	v
+loggingQueries	src/Connection.php	/^        $this->loggingQueries = true;$/;"	v
+loggingQueries	src/Connection.php	/^    protected $loggingQueries = false;$/;"	v
+makeConnection	src/ConnectionResolver.php	/^    protected function makeConnection(string $name): Connection$/;"	f
+max	src/Query/Builder.php	/^    public function max(string $column)$/;"	f
+message	src/Exceptions/IndexNotFound.php	/^        $this->message = "no such index [{$index}].";$/;"	v
+message	src/Exceptions/QueryException.php	/^        $this->message = $this->formatMessage($queries, $previous);$/;"	v
+meta	src/Query/Grammar.php	/^        $meta = $this->compileBetween($where['column'], $where['value']);$/;"	v
+meta	src/Query/Grammar.php	/^        $meta = $this->compileExists($where['column']);$/;"	v
+meta	src/Query/Grammar.php	/^        $meta = $this->compileMeta($where['column'], $where['value']);$/;"	v
+meta	src/Query/Grammar.php	/^        $meta = $this->compileMeta($where['column'], $where['value'], $where['operator']);$/;"	v
+meta	src/Query/Grammar.php	/^        $meta = $this->compileMeta($where['column'], $where['value'], 'match');$/;"	v
+meta	src/Query/Grammar.php	/^        $meta = $this->compileWheres($where['query']);$/;"	v
+method	src/Connection.php	/^        $method = $type == 'toggle' ? 'updateAliases' : $type . 'Alias';$/;"	v
+method	src/Eloquent/Model.php	/^            $method = 'boot'.class_basename($trait);$/;"	v
+method	src/Eloquent/Model.php	/^            if (method_exists($class, $method = 'initialize'.class_basename($trait))) {$/;"	v
+method	src/Events/QueryExecuted.php	/^        $this->method = $method;$/;"	v
+method	src/Events/QueryExecuted.php	/^    public $method;$/;"	v
+method	src/Exceptions/IndexNotFound.php	/^        $this->method = $method;$/;"	v
+method	src/Exceptions/IndexNotFound.php	/^    protected $method;$/;"	v
+method	src/Exceptions/QueryException.php	/^        $this->method = $method;$/;"	v
+method	src/Exceptions/QueryException.php	/^    protected $method;$/;"	v
+method	src/Query/Builder.php	/^    protected function addArrayOfWheres(array $column, $method = 'where'): Builder$/;"	v
+method	src/Query/Grammar.php	/^                $method = 'compile'.ucfirst($component);$/;"	v
+method	src/Query/Grammars/AggregationGrammar.php	/^            $method = 'compile'.ucfirst($aggregate['function']);$/;"	v
+method	src/Schema/Blueprint.php	/^            $method = 'compile' . ucfirst($command->name);$/;"	v
+min	src/Query/Builder.php	/^    public function min(string $column)$/;"	f
+model	tests/Elasticsearch/ElasticModelTest.php	/^        $this->model = new TestModel;$/;"	v
+model	tests/Elasticsearch/ElasticModelTest.php	/^    protected $model;$/;"	v
+must_not	src/Query/Grammar.php	/^    protected $must_not = [];$/;"	v
+name	src/ConnectionResolver.php	/^            $name = $this->getDefaultConnection();$/;"	v
+name	src/ConnectionResolver.php	/^        $name = $name ?: $this->getDefaultConnection();$/;"	v
+name	src/Query/Builder.php	/^        foreach ($groups as $name=>$callback) {$/;"	v
+name	src/Query/Builder.php	/^        foreach ($response['aggregations'] as $name => $agg) {$/;"	v
+name	src/Schema/Concerns/Template.php	/^        $name = $body['name'];$/;"	v
+name	tests/Elasticsearch/ElasticModelTest.php	/^    public function __construct(?string $name = null, array $data = [], $dataName = '')$/;"	v
+nested	src/Query/Grammars/AggregationGrammar.php	/^                $nested = array_filter($this->compileAggFilters($queries[$column]));$/;"	v
+newQuery	src/Eloquent/Model.php	/^    public function newQuery(): Builder$/;"	f
+newQuery	src/Query/Builder.php	/^    public function newQuery(): Builder$/;"	f
+normal	src/Query/Grammars/AggregationGrammar.php	/^                $normal = $this->compileSimpleAgg('terms', [$column]);$/;"	v
+not	src/Query/Builder.php	/^    public function whereBetween(string $column, array $value, $not = false): Builder$/;"	v
+not	src/Query/Builder.php	/^    public function whereExists($columns, $not = false): Builder$/;"	v
+not	src/Query/Builder.php	/^    public function whereIn(string $column, $value, $not = false): Builder$/;"	v
+object	src/Schema/Concerns/Columns.php	/^    public function object(string $column): ColumnDefinition$/;"	f
+offset	src/Query/Builder.php	/^        $this->offset = max(0, $value);$/;"	v
+offset	src/Query/Builder.php	/^        $this->offset = null;$/;"	v
+offset	src/Query/Builder.php	/^    public $offset;$/;"	v
+offset	src/Query/Builder.php	/^    public function offset(int $value): Builder$/;"	f
+offsetExists	src/Eloquent/Concerns/HasAttributes.php	/^    public function offsetExists($offset)$/;"	f
+offsetExists	src/Eloquent/Model.php	/^    public function offsetExists($offset): bool$/;"	f
+offsetGet	src/Eloquent/Concerns/HasAttributes.php	/^    public function offsetGet($offset)$/;"	f
+offsetGet	src/Eloquent/Model.php	/^    public function offsetGet($offset)$/;"	f
+offsetSet	src/Eloquent/Concerns/HasAttributes.php	/^    public function offsetSet($offset, $value)$/;"	f
+offsetSet	src/Eloquent/Model.php	/^    public function offsetSet($offset, $value)$/;"	f
+offsetUnset	src/Eloquent/Concerns/HasAttributes.php	/^    public function offsetUnset($offset)$/;"	f
+offsetUnset	src/Eloquent/Model.php	/^    public function offsetUnset($offset)$/;"	f
+on	src/Query/Builder.php	/^     * Execute an aggregate function on the database.$/;"	f
+onceWithAggregate	src/Query/Builder.php	/^    protected function onceWithAggregate($response): Collection$/;"	f
+onceWithColumns	src/Query/Builder.php	/^    protected function onceWithColumns(array $columns, callable $callback): Collection$/;"	f
+op	src/Query/Grammar.php	/^    protected function compileMeta($column, $value, $op=null): array$/;"	v
+operator	src/Query/Builder.php	/^    public function where($column, $operator = null, $value = null): Builder$/;"	v
+operators	src/Query/Builder.php	/^    public $operators = [$/;"	v
+orWhere	src/Query/Builder.php	/^    public function orWhere(Closure $column): Builder$/;"	f
+orWhereIn	src/Query/Builder.php	/^\/\/    public function orWhereIn(string $column, $values): Builder$/;"	f
+order	src/Schema/Blueprint.php	/^    public function order(int $number)$/;"	f
+orderBy	src/Query/Builder.php	/^    public function orderBy($column, $direction = 'asc'): Builder$/;"	f
+orderByDesc	src/Query/Builder.php	/^    public function orderByDesc(string $column): Builder$/;"	f
+orders	src/Query/Builder.php	/^            $this->orders = array_merge($this->orders, $column);$/;"	v
+orders	src/Query/Builder.php	/^    public $orders = [];$/;"	v
+original	src/Query/Builder.php	/^        $original = $this->columns;$/;"	v
+page	src/Query/Builder.php	/^        $page = $page ?: Paginator::resolveCurrentPage($pageName);$/;"	v
+paginate	src/Query/Builder.php	/^        $this->paginate = false;$/;"	v
+paginate	src/Query/Builder.php	/^        $this->paginate = true;$/;"	v
+paginate	src/Query/Builder.php	/^    protected $paginate;$/;"	v
+paginate	src/Query/Builder.php	/^    public function paginate($perPage = 15, $columns = ['*'], $pageName = 'page', $page = null)$/;"	f
+paginator	src/Query/Builder.php	/^    protected function paginator(Collection $items, int $total, int $perPage, int $currentPage, array $options): LengthAwarePaginator$/;"	f
+parameters	src/Schema/Concerns/Columns.php	/^    public function addColumn(string $type, string $column, array $parameters = []): ColumnDefinition$/;"	v
+params	src/Query/Builder.php	/^        $params = $this->grammar->compileUpdate($this, $values);$/;"	v
+perPage	src/Query/Builder.php	/^    public function forPage(int $page, $perPage = 15): Builder$/;"	v
+pluck	src/Query/Builder.php	/^    public function pluck(string $column, $key = null): Collection$/;"	f
+pluckFromArrayColumn	src/Query/Builder.php	/^    protected function pluckFromArrayColumn($queryResult, string $column, ?string $key): Collection$/;"	f
+prefix	src/Schema/Blueprint.php	/^        $this->prefix = $prefix;$/;"	v
+prefix	src/Schema/Blueprint.php	/^    protected $prefix;$/;"	v
+prefix	src/Schema/Builder.php	/^        $prefix = $this->connection->getConfig('prefix_indexes')$/;"	v
+prepareValueAndOperator	src/Query/Builder.php	/^    protected function prepareValueAndOperator($value, $operator, $useDefault = false): array$/;"	f
+putTemplate	src/Schema/Blueprint.php	/^    public function putTemplate(): Fluent$/;"	f
+queries	src/Events/QueryExecuted.php	/^        $this->queries = $queries;$/;"	v
+queries	src/Events/QueryExecuted.php	/^    public $queries;$/;"	v
+queries	src/Exceptions/QueryException.php	/^        $this->queries = $queries;$/;"	v
+queries	src/Exceptions/QueryException.php	/^    protected $queries;$/;"	v
+queries	src/Query/Builder.php	/^    protected function setAggregate(string $function, array $columns, array $queries=[]): Builder$/;"	v
+query	src/Connection.php	/^    public function query(): QueryBuilder$/;"	f
+query	src/ConnectionInterface.php	/^    public function query(): QueryBuilder;$/;"	f
+query	src/Query/Builder.php	/^        call_user_func($callback, $query = $this->forNestedWhere());$/;"	v
+query	src/Query/Grammar.php	/^        $query = [];$/;"	v
+queryGrammar	src/Connection.php	/^        $this->queryGrammar = $this->getDefaultQueryGrammar();$/;"	v
+queryGrammar	src/Connection.php	/^    protected $queryGrammar;$/;"	v
+queryLog	src/Connection.php	/^        $this->queryLog = [];$/;"	v
+queryLog	src/Connection.php	/^    protected $queryLog = [];$/;"	v
+queryResult	src/Query/Builder.php	/^        $queryResult = $this->onceWithColumns($/;"	v
+range	src/Query/Grammar.php	/^    protected $range = [$/;"	v
+reconnect	src/Connection.php	/^    public function reconnect()$/;"	f
+reconnect	src/ConnectionResolver.php	/^    public function reconnect($name = null): ConnectionInterface$/;"	f
+reconnectIfMissingConnection	src/Connection.php	/^    protected function reconnectIfMissingConnection()$/;"	f
+reconnector	src/Connection.php	/^    protected $reconnector;$/;"	v
+refresh	src/Query/Builder.php	/^        $this->refresh = $refresh;$/;"	v
+refresh	src/Query/Builder.php	/^    public $refresh;$/;"	v
+refresh	src/Query/Builder.php	/^    public function refresh(bool $refresh=true): Builder$/;"	f
+refresh	src/Query/Builder.php	/^    public function refresh(bool $refresh=true): Builder$/;"	v
+refreshConnections	src/ConnectionResolver.php	/^    protected function refreshConnections(string $name): Connection$/;"	f
+refreshInterval	src/Schema/Blueprint.php	/^    public function refreshInterval(int $number): Fluent$/;"	f
+register	src/ElasticsearchServiceProvider.php	/^    public function register()$/;"	f
+replicas	src/Schema/Blueprint.php	/^    public function replicas(int $number): Fluent$/;"	f
+res	src/Query/Grammar.php	/^        $res = [];$/;"	v
+resolveConnection	src/Eloquent/Model.php	/^    public static function resolveConnection($connection = null): Connection$/;"	f
+resolver	src/Eloquent/Model.php	/^    protected static $resolver;$/;"	v
+resolver	src/Schema/Builder.php	/^    protected $resolver;$/;"	v
+response	src/Query/Builder.php	/^        $response = $callback();$/;"	v
+result	src/Connection.php	/^            $result = $callback($method, $queries);$/;"	v
+result	src/Connection.php	/^            $result = $this->runQueryCallback($method, $queries, $callback);$/;"	v
+result	src/Query/Builder.php	/^        $result = $this->aggregate(__FUNCTION__, [$column]);$/;"	v
+result	src/Query/Builder.php	/^        $result = $this->connection->update($params, $this->wheres);$/;"	v
+result	src/Query/Builder.php	/^        $result = $this->runCount();$/;"	v
+result	src/Query/Builder.php	/^        $result = collect($response['hits']['hits']);$/;"	v
+results	src/Query/Builder.php	/^        $results = $this->forPage($page, $perPage)->get($columns);$/;"	v
+results	src/Query/Builder.php	/^        $results = $this->setAggregate($function, $columns)->get($columns);$/;"	v
+results	src/Query/Builder.php	/^        $results = [];$/;"	v
+results	src/Schema/Blueprint.php	/^    public function results(int $number): Fluent$/;"	f
+ret	tests/Elasticsearch/ElasticTest.php	/^        $ret = app('es.connection')->table('test_a')->find(1000);$/;"	v
+ret	tests/Elasticsearch/ElasticTest.php	/^        $ret = app('es.connection')->table('test_a')->insert([$/;"	v
+run	src/Connection.php	/^    protected function run(string $method, array $queries, Closure $callback = null)$/;"	f
+runCount	src/Query/Builder.php	/^    protected function runCount(): array$/;"	f
+runQueryCallback	src/Connection.php	/^    protected function runQueryCallback(string $method, array $queries, Closure $callback)$/;"	f
+runSelect	src/Query/Builder.php	/^    protected function runSelect(): array$/;"	f
+schema	src/Connection.php	/^    public function schema(): SchemaBuilder$/;"	f
+schemaGrammar	src/Connection.php	/^        $this->schemaGrammar = $this->getDefaultSchemaGrammar();$/;"	v
+schemaGrammar	src/Connection.php	/^    protected $schemaGrammar;$/;"	v
+scroll	src/Query/Builder.php	/^        $this->scroll = compact('scroll', 'scroll_id');$/;"	v
+scroll	src/Query/Builder.php	/^    public $scroll;$/;"	v
+scroll	src/Query/Builder.php	/^    public function scroll(string $scroll, $scroll_id=''): Builder$/;"	f
+scrollId	src/Query/Builder.php	/^    public function clearScroll(string $scrollId = '')$/;"	v
+scroll_id	src/Query/Builder.php	/^            $scroll_id = $response['_scroll_id'];$/;"	v
+scroll_id	src/Query/Builder.php	/^    public $scroll_id;$/;"	v
+scroll_id	src/Query/Builder.php	/^    public function scroll(string $scroll, $scroll_id=''): Builder$/;"	v
+select	src/Connection.php	/^    public function select(array $params)$/;"	f
+select	src/ConnectionInterface.php	/^    public function select(array $params);$/;"	f
+select	src/Query/Builder.php	/^    public function select($columns = ['*']): Builder$/;"	f
+selectComponents	src/Query/Grammar.php	/^    protected $selectComponents = [$/;"	v
+setAggregate	src/Query/Builder.php	/^    protected function setAggregate(string $function, array $columns, array $queries=[]): Builder$/;"	f
+setAttribute	src/Eloquent/Concerns/HasAttributes.php	/^    public function setAttribute($offset, $value)$/;"	f
+setAttributes	src/Eloquent/Concerns/HasAttributes.php	/^    public function setAttributes($attributes)$/;"	f
+setClient	src/Connection.php	/^    public function setClient($client)$/;"	f
+setConnection	src/Eloquent/Model.php	/^    public function setConnection(?string $name): Model$/;"	f
+setConnection	src/Schema/Builder.php	/^    public function setConnection(Connection $connection): Builder$/;"	f
+setConnectionResolver	src/Eloquent/Model.php	/^    public static function setConnectionResolver(Resolver $resolver)$/;"	f
+setDefaultConnection	src/ConnectionResolver.php	/^    public function setDefaultConnection(string $name)$/;"	f
+setDefaultConnection	src/ConnectionResolverInterface.php	/^    public function setDefaultConnection(string $name);$/;"	f
+setEvents	src/Connection.php	/^    public function setEvents($events)$/;"	f
+setTable	src/Eloquent/Model.php	/^    public function setTable(string $table): Model$/;"	f
+setTablePrefix	src/Connection.php	/^    public function setTablePrefix(string $prefix): Connection$/;"	f
+setTablePrefix	src/Query/Grammars/Warp.php	/^    public function setTablePrefix(string $prefix)$/;"	f
+settingCommand	src/Schema/Blueprint.php	/^    protected function settingCommand(string $type, $value): Fluent$/;"	f
+settings	src/Schema/Grammar.php	/^        $this->settings = array_merge($this->settings, $this->warpCommand($command));$/;"	v
+settings	src/Schema/Grammar.php	/^    protected $settings = [];$/;"	v
+shards	src/Schema/Blueprint.php	/^    public function shards(int $number): Fluent$/;"	f
+should	src/Query/Grammar.php	/^                $should = [];$/;"	v
+skip	src/Query/Builder.php	/^    public function skip(int $value): Builder$/;"	f
+smallInteger	src/Schema/Concerns/Columns.php	/^    public function smallInteger(string $column): ColumnDefinition$/;"	f
+sql	src/Query/Grammar.php	/^        $sql = [];$/;"	v
+start	src/Connection.php	/^        $start = microtime(true);$/;"	v
+statements	src/Schema/Blueprint.php	/^                    $statements = array_merge($statements, (array) $sql);$/;"	v
+statements	src/Schema/Blueprint.php	/^        $statements = [];$/;"	v
+string	src/Schema/Concerns/Columns.php	/^    public function string(string $column): ColumnDefinition$/;"	f
+sum	src/Query/Builder.php	/^    public function sum(string $column)$/;"	f
+table	src/Connection.php	/^    public function table($table): QueryBuilder$/;"	f
+table	src/ConnectionInterface.php	/^    public function table($table): QueryBuilder;$/;"	f
+table	src/Eloquent/Model.php	/^        $this->table = $table;$/;"	v
+table	src/Eloquent/Model.php	/^    protected $table;$/;"	v
+table	src/Schema/Blueprint.php	/^        $this->table = $table;$/;"	v
+table	src/Schema/Blueprint.php	/^    protected $table;$/;"	v
+table	tests/Elasticsearch/ElasticModelTest.php	/^    protected $table = 'test_a';$/;"	v
+tablePrefix	src/Connection.php	/^        $this->tablePrefix = $prefix;$/;"	v
+tablePrefix	src/Connection.php	/^    protected $tablePrefix = '';$/;"	v
+tablePrefix	src/Query/Grammars/Warp.php	/^        $this->tablePrefix = $prefix;$/;"	v
+tablePrefix	src/Query/Grammars/Warp.php	/^    protected $tablePrefix;$/;"	v
+take	src/Query/Builder.php	/^    public function take(int $value): Builder$/;"	f
+template	src/Connection.php	/^    public function template(string $type, array $params)$/;"	f
+test_alias	tests/Elasticsearch/ElasticIndexTest.php	/^    public function test_alias()$/;"	f
+test_create_template	tests/Elasticsearch/ElasticIndexTest.php	/^    public function test_create_template()$/;"	f
+test_elastic_aggs	tests/Elasticsearch/ElasticTest.php	/^    public function test_elastic_aggs()$/;"	f
+test_elastic_create	tests/Elasticsearch/ElasticTest.php	/^    public function test_elastic_create()$/;"	f
+test_elastic_delete	tests/Elasticsearch/ElasticTest.php	/^    public function test_elastic_delete()$/;"	f
+test_elastic_find	tests/Elasticsearch/ElasticTest.php	/^    public function test_elastic_find()$/;"	f
+test_elastic_search	tests/Elasticsearch/ElasticTest.php	/^    public function test_elastic_search()$/;"	f
+test_elastic_update	tests/Elasticsearch/ElasticTest.php	/^    public function test_elastic_update()$/;"	f
+test_model_connection	tests/Elasticsearch/ElasticModelTest.php	/^    public function test_model_connection()$/;"	f
+test_update_template	tests/Elasticsearch/ElasticIndexTest.php	/^    public function test_update_template()$/;"	f
+text	src/Schema/Concerns/Columns.php	/^    public function text(string $column): ColumnDefinition$/;"	f
+time	src/Connection.php	/^    public function logQuery(string $method, array $queries, $time = null)$/;"	v
+time	src/Events/QueryExecuted.php	/^        $this->time = $time;$/;"	v
+time	src/Events/QueryExecuted.php	/^    public $time;$/;"	v
+tinyInteger	src/Schema/Concerns/Columns.php	/^    public function tinyInteger(string $column): ColumnDefinition$/;"	f
+toggleAlias	src/Schema/Concerns/Alias.php	/^    public function toggleAlias(string $alias, string $old, string $new)$/;"	f
+total	src/Query/Builder.php	/^        $total = $response['hits']['total']['value'] ?? 0;$/;"	v
+traitInitializers	src/Eloquent/Model.php	/^    protected static $traitInitializers = [];$/;"	v
+type	src/Query/Builder.php	/^            $type = 'Nested';$/;"	v
+type	src/Query/Builder.php	/^        $type = $not ? 'NotBetween' : 'Between';$/;"	v
+type	src/Query/Builder.php	/^        $type = $not ? 'NotExists' : 'Exists';$/;"	v
+type	src/Query/Builder.php	/^        $type = $not ? 'NotIn' : 'In';$/;"	v
+type	src/Query/Builder.php	/^        $type = 'Basic';$/;"	v
+type	src/Query/Builder.php	/^        $type = 'Like';$/;"	v
+type	src/Query/Builder.php	/^    public $type;$/;"	v
+type	src/Query/Grammar.php	/^        $type = $this->getType($where['boolean']);$/;"	v
+type	src/Query/Grammar.php	/^        $type = $this->getType($where['operator']);$/;"	v
+type	src/Query/Grammar.php	/^        $type = $this->getType('between');$/;"	v
+type	src/Query/Grammar.php	/^        $type = $this->getType('exists');$/;"	v
+type	src/Query/Grammar.php	/^        $type = $this->getType('in');$/;"	v
+type	src/Query/Grammar.php	/^        $type = $this->getType('like');$/;"	v
+type	src/Query/Grammar.php	/^        $type = $this->getType('not_between');$/;"	v
+type	src/Query/Grammar.php	/^        $type = $this->getType('not_exists');$/;"	v
+type	src/Query/Grammar.php	/^        $type = $this->getType('not_in');$/;"	v
+type	src/Query/Grammar.php	/^        $type = $this->wrapType($type);$/;"	v
+type	src/Query/Grammars/AggregationGrammar.php	/^            foreach ($wheres['bool'] as $type => $where) {$/;"	v
+unless	src/Query/Builder.php	/^    public function unless($value, callable $callback, $default = null)$/;"	f
+unlessExists	src/Query/Builder.php	/^    public function unlessExists($value, callable $callback, $default = null)$/;"	f
+unsetConnectionResolver	src/Eloquent/Model.php	/^    public static function unsetConnectionResolver()$/;"	f
+update	src/Connection.php	/^    public function update($params, $by_query=false)$/;"	f
+update	src/ConnectionInterface.php	/^    public function update(array $params, $by_query=false);$/;"	f
+update	src/Query/Builder.php	/^    public function update(array $values): array$/;"	f
+upsert	src/Query/Grammar.php	/^    public function compileUpsert(Builder $query, array $values, array $upsert=[]): array$/;"	v
+useDefault	src/Query/Builder.php	/^    protected function prepareValueAndOperator($value, $operator, $useDefault = false): array$/;"	v
+useDefaultClient	src/Connection.php	/^    public function useDefaultClient()$/;"	f
+useDefaultClient	src/ConnectionInterface.php	/^    public function useDefaultClient();$/;"	f
+useDefaultQueryGrammar	src/Connection.php	/^    public function useDefaultQueryGrammar()$/;"	f
+useDefaultQueryGrammar	src/ConnectionInterface.php	/^    public function useDefaultQueryGrammar();$/;"	f
+useDefaultSchemaGrammar	src/Connection.php	/^    public function useDefaultSchemaGrammar()$/;"	f
+useDefaultSchemaGrammar	src/ConnectionInterface.php	/^    public function useDefaultSchemaGrammar();$/;"	f
+value	src/Query/Builder.php	/^            $value = $value->toArray();$/;"	v
+warpAlias	src/Schema/Blueprint.php	/^    public function warpAlias($alias): string$/;"	f
+warpColumns	src/Schema/Grammar.php	/^    protected function warpColumns($command): array$/;"	f
+warpCommand	src/Schema/Grammar.php	/^    protected function warpCommand($command): array$/;"	f
+when	src/Query/Builder.php	/^    public function when($value, callable $callback, $default = null)$/;"	f
+whenExists	src/Query/Builder.php	/^    public function whenExists($value, callable $callback, $default = null)$/;"	f
+where	src/Query/Builder.php	/^    public function where($column, $operator = null, $value = null): Builder$/;"	f
+whereBasic	src/Query/Grammar.php	/^    protected function whereBasic(Builder $query, array $where): array$/;"	f
+whereBetween	src/Query/Builder.php	/^    public function whereBetween(string $column, array $value, $not = false): Builder$/;"	f
+whereBetween	src/Query/Grammar.php	/^    protected function whereBetween(Builder $query, array $where): array$/;"	f
+whereExists	src/Query/Builder.php	/^    public function whereExists($columns, $not = false): Builder$/;"	f
+whereExists	src/Query/Grammar.php	/^    protected function whereExists(Builder $query, array $where): array$/;"	f
+whereIn	src/Query/Builder.php	/^    public function whereIn(string $column, $value, $not = false): Builder$/;"	f
+whereIn	src/Query/Grammar.php	/^    protected function whereIn(Builder $query, array $where): array$/;"	f
+whereLike	src/Query/Builder.php	/^    public function whereLike(string $column, string $value): Builder$/;"	f
+whereLike	src/Query/Grammar.php	/^    protected function whereLike(Builder $query, array $where): array$/;"	f
+whereNested	src/Query/Builder.php	/^    public function whereNested(Closure $callback, $boolean='and'): Builder$/;"	f
+whereNested	src/Query/Grammar.php	/^    protected function whereNested(Builder $query, $where): array$/;"	f
+whereNotBetween	src/Query/Builder.php	/^    public function whereNotBetween(string $column, array $values): Builder$/;"	f
+whereNotBetween	src/Query/Grammar.php	/^    protected function whereNotBetween(Builder $query, array $where): array$/;"	f
+whereNotExists	src/Query/Builder.php	/^    public function whereNotExists($columns): Builder$/;"	f
+whereNotExists	src/Query/Grammar.php	/^    protected function whereNotExists(Builder $query, array $where): array$/;"	f
+whereNotIn	src/Query/Builder.php	/^    public function whereNotIn(string $column, $values): Builder$/;"	f
+whereNotIn	src/Query/Grammar.php	/^    protected function whereNotIn(Builder $query, array $where): array$/;"	f
+whereNotNull	src/Query/Builder.php	/^    public function whereNotNull($columns): Builder$/;"	f
+whereNull	src/Query/Builder.php	/^    public function whereNull($columns): Builder$/;"	f
+wheres	src/Query/Builder.php	/^    public $wheres;$/;"	v
+wheres	src/Query/Grammars/AggregationGrammar.php	/^        $wheres = $this->compileRaw($this->compileWheres($query));$/;"	v
+wheres	tests/Elasticsearch/ElasticTest.php	/^        $wheres = app('es.connection')->table('test_a')$/;"	v
+wheres	tests/Elasticsearch/ElasticTest.php	/^\/\/        $wheres = app('es.connection')->table('kpi_users')->find(5639485, ["high_code", "code", "name", "cycle_id"]);$/;"	v
+which	src/Query/Grammar.php	/^        \/\/ Each type of where clauses has its own compiler function which is responsible$/;"	f
+wrap	src/Query/Grammars/Warp.php	/^    public function wrap($value, $defaultAlias = '')$/;"	f
+wrapAliasedValue	src/Query/Grammars/Warp.php	/^    protected function wrapAliasedValue(string $value): array$/;"	f
+wrapTable	src/Query/Grammars/Warp.php	/^    public function wrapTable(string $table): string$/;"	f
+wrapType	src/Query/Grammars/Warp.php	/^    public function wrapType(?string $type): ?string$/;"	f

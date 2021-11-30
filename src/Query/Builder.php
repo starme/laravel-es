@@ -821,7 +821,7 @@ class Builder
      */
     protected function runCount(): array
     {
-        return $this->connection->count($this->grammar->compileSelect($this));
+        return $this->connection->count($this->grammar->compileCount($this));
     }
 
     /**
