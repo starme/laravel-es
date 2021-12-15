@@ -715,6 +715,13 @@ class Builder
         }));
     }
 
+    public function getRaw($columns = ['*']): array
+    {
+        return $this->onceWithColumnsRaw(Arr::wrap($columns), function () {
+            return $this->runSelect();
+        });
+    }
+
     /**
      * Execute the query as a "select" statement.
      *
@@ -737,6 +744,37 @@ class Builder
     {
         $this->scroll = compact('scroll', 'scroll_id');
         return $this;
+    }
+
+    /**
+     * Execute the given callback while selecting the given columns.
+     *
+     * After running the callback, the columns are reset to the original value.
+     *
+     * @param array $columns
+     * @param callable $callback
+     * @return \Illuminate\Support\Collection
+     */
+    protected function onceWithColumnsRaw(array $columns, callable $callback): array
+    {
+        if ($this->aggregate) {
+            return $callback();
+        }
+        $original = $this->columns;
+
+        if (is_null($original)) {
+            $this->columns = $columns;
+        }
+
+        $response = $callback();
+
+        if ($this->scroll) {
+            $scroll_id = $response['_scroll_id'];
+            if (empty($response['hits']['hits'])) {
+                $this->clearScroll($scroll_id);
+            }
+        }
+        return $response;
     }
 
     /**
@@ -799,7 +837,9 @@ class Builder
                 //$results[$name]['doc_count'] = $agg['doc_count'];
                 continue;
             }
-            $results[$name] = $agg['buckets'];
+            if (isset($agg['buckets'])) {
+                $results[$name] = $agg['buckets'];
+            }
         }
         return collect($results ?? []);
     }
