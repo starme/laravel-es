@@ -104,6 +104,12 @@ class Builder
      */
     public $refresh;
 
+    /** 
+     * [$realHits description]
+     * @var [type]
+     */
+    public $realTotal;
+
     /**
      * @var bool
      */
@@ -895,7 +901,7 @@ class Builder
 
         $this->paginate = true;
 
-        $results = $this->forPage($page, $perPage)->get($columns);
+        $results = $this->forPage($page, $perPage)->realTotal()->get($columns);
 
         $this->paginate = false;
 
@@ -996,6 +1002,13 @@ class Builder
     public function logEnable(bool $enable=true): Builder
     {
         $this->logEnable = $enable;
+
+        return $this;
+    }
+
+    public function realTotal($hits=true)
+    {
+        $this->realTotal = $hits;
 
         return $this;
     }

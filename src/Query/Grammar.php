@@ -28,6 +28,7 @@ class Grammar
         'index',
         'type',
         'refresh',
+        'realTotal',
         'wheres',
         'orders',
         'limit',
@@ -145,6 +146,11 @@ class Grammar
     protected function compileRefresh(Builder $query, bool $refresh): array
     {
         return compact('refresh');
+    }
+
+    protected function compileRealTotal(Builder $query, $track_total_hits): array
+    {
+        return compact('track_total_hits');
     }
 
     /**
