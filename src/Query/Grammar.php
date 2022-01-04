@@ -191,10 +191,21 @@ class Grammar
      */
     protected function whereBasic(Builder $query, array $where): array
     {
-        //根据operator判断是否是哪种搜索方式
-        $type = $this->getType($where['operator']);
+        // //根据operator判断是否是哪种搜索方式
+        // $type = $this->getType($where['operator']);
+        // //根据value判断是否是term/terms
+        // $meta = $this->compileMeta($where['column'], $where['value'], $where['operator']);
+        // return compact('type', 'meta');
+
         //根据value判断是否是term/terms
         $meta = $this->compileMeta($where['column'], $where['value'], $where['operator']);
+        
+        if (array_key_exists('multi_match', $meta)) {
+            $where['operator'] = 'like';
+        }
+
+        //根据operator判断是否是哪种搜索方式
+        $type = $this->getType($where['operator']);
         return compact('type', 'meta');
     }
 
