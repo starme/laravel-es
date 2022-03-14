@@ -84,6 +84,7 @@ trait AggregationGrammar
         foreach ($columns as $column) {
             [$column, $alias] = $this->wrap($column, $this->defaultAggAlias($type, $column));
             $aggs[$alias][$type]['field'] = $column;
+            $aggs[$alias][$type]['size'] = 10000;
         }
         return $aggs;
     }
