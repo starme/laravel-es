@@ -95,4 +95,6 @@ interface ConnectionInterface
 
     public function getQueryGrammar(): QueryGrammar;
 
+    public function getName(): string;
+
 }

@@ -29,12 +29,13 @@ class Grammar
         'type',
         'refresh',
         'realTotal',
+        'highlight',
         'wheres',
         'orders',
         'limit',
         'offset',
         'lock',
-        'scroll'
+        'scroll',
     ];
 
     protected $range = [
@@ -153,6 +154,18 @@ class Grammar
         return compact('track_total_hits');
     }
 
+    protected function compileHighlight(Builder $query, $highlight): array
+    {
+        foreach($highlight['fields'] as $f => $c) {
+            if (is_string($f)) {
+                continue;
+            }
+            $highlight['fields'][$c] = new \stdClass();
+            unset($highlight['fields'][$f]);
+        }
+        return compact('highlight');
+    }
+
     /**
      * Compile the "where" portions of the query.
      *
@@ -199,7 +212,7 @@ class Grammar
 
         //根据value判断是否是term/terms
         $meta = $this->compileMeta($where['column'], $where['value'], $where['operator']);
-        
+
         if (array_key_exists('multi_match', $meta)) {
             $where['operator'] = 'like';
         }
@@ -546,6 +559,9 @@ class Grammar
         }
         if (isset($segments['distinct'])) {
             $segments['distinct'] = ['body'=> $segments['distinct']];
+        }
+        if (isset($segments['highlight'])) {
+            $segments['highlight'] = ['body' => $segments['highlight']];
         }
         return array_merge_recursive(...array_values($segments));
     }

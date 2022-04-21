@@ -104,7 +104,12 @@ class Builder
      */
     public $refresh;
 
-    /** 
+    /**
+     * @var array
+     */
+    public $highlight;
+
+    /**
      * [$realHits description]
      * @var [type]
      */
@@ -142,12 +147,11 @@ class Builder
 
     public function from($name): Builder
     {
-        if( str_contains($name, '.') ) {
+        if (str_contains($name, '.')) {
             // Table name support point syntax.
             // But only two
             [$this->index, $this->type] = explode('.', $name, '2');
-        } else
-        //
+        } else //
         {
             $this->index = $name;
         }
@@ -198,7 +202,7 @@ class Builder
      */
     protected function invalidOperator(string $operator): bool
     {
-        return ! in_array(strtolower($operator), $this->operators, true);
+        return !in_array(strtolower($operator), $this->operators, true);
     }
 
     /**
@@ -237,7 +241,7 @@ class Builder
      * @param string $boolean
      * @return $this
      */
-    public function whereNested(Closure $callback, $boolean='and'): Builder
+    public function whereNested(Closure $callback, $boolean = 'and'): Builder
     {
         call_user_func($callback, $query = $this->forNestedWhere());
 
@@ -296,7 +300,7 @@ class Builder
     protected function invalidOperatorAndValue(string $operator, $value): bool
     {
         return is_null($value) && in_array($operator, $this->operators) &&
-            ! in_array($operator, ['=', '<>', '!=']);
+            !in_array($operator, ['=', '<>', '!=']);
     }
 
     /**
@@ -311,7 +315,7 @@ class Builder
 //            $value, $operator, func_num_args() === 2
 //        );
 
-        if (! $column instanceof Closure) {
+        if (!$column instanceof Closure) {
             throw new InvalidArgumentException("Or where must be closure");
         }
         return $this->whereNested($column, 'or');
@@ -481,7 +485,7 @@ class Builder
 
         $direction = strtolower($direction);
 
-        if (! in_array($direction, ['asc', 'desc'], true)) {
+        if (!in_array($direction, ['asc', 'desc'], true)) {
             throw new InvalidArgumentException('Order direction must be "asc" or "desc".');
         }
 
@@ -528,24 +532,24 @@ class Builder
      * @param null|callable $callback
      * @return $this
      */
-    public function groupByRaw(string $group, $callback=null): Builder
+    public function groupByRaw(string $group, $callback = null): Builder
     {
         if (!$callback || !is_callable($callback)) {
             return $this->groupBy($group);
         }
-        $this->setAggregate('queries', [$group], [$group=>$this->groupByNested($callback)]);
+        $this->setAggregate('queries', [$group], [$group => $this->groupByNested($callback)]);
         return $this;
     }
 
     /**
      * Add a "group by" clause to the bulk.
      *
-     * @param  array $groups
+     * @param array $groups
      * @return $this
      */
     public function groupByBulk(array $groups): Builder
     {
-        foreach ($groups as $name=>$callback) {
+        foreach ($groups as $name => $callback) {
             if (is_callable($callback)) {
                 $groups[$name] = call_user_func($callback, $this->forNestedWhere());
                 continue;
@@ -650,7 +654,7 @@ class Builder
      */
     public function unless($value, callable $callback, $default = null)
     {
-        if (! $value) {
+        if (!$value) {
             return $callback($this, $value) ?: $this;
         } elseif ($default) {
             return $default($this, $value) ?: $this;
@@ -688,8 +692,8 @@ class Builder
     /**
      * Execute a query for a single record by ID.
      *
-     * @param  int|string  $id
-     * @param  array  $columns
+     * @param int|string $id
+     * @param array $columns
      * @return array|null
      */
     public function find($id, $columns = ['*']): ?array
@@ -700,7 +704,7 @@ class Builder
     /**
      * Execute the query and get the first result.
      *
-     * @param  array|string  $columns
+     * @param array|string $columns
      * @return array|null
      */
     public function first($columns = ['*']): ?array
@@ -711,7 +715,7 @@ class Builder
     /**
      * Execute the query as a "select" statement.
      *
-     * @param  array|string  $columns
+     * @param array|string $columns
      * @return \Illuminate\Support\Collection
      */
     public function get($columns = ['*']): Collection
@@ -746,7 +750,7 @@ class Builder
      * @param string $scroll_id
      * @return \Starme\LaravelEs\Query\Builder
      */
-    public function scroll(string $scroll, $scroll_id=''): Builder
+    public function scroll(string $scroll, $scroll_id = ''): Builder
     {
         $this->scroll = compact('scroll', 'scroll_id');
         return $this;
@@ -835,11 +839,11 @@ class Builder
     protected function onceWithAggregate($response): Collection
     {
         foreach ($response['aggregations'] as $name => $agg) {
-            if ( ! is_array($agg)) {
+            if (!is_array($agg)) {
                 continue;
             }
             if (isset($agg['doc_count'])) {
-                $results[$name] = $this->onceWithAggregate(['aggregations'=>$agg]);
+                $results[$name] = $this->onceWithAggregate(['aggregations' => $agg]);
                 //$results[$name]['doc_count'] = $agg['doc_count'];
                 continue;
             }
@@ -933,7 +937,7 @@ class Builder
      * Get an array with the values of a given column.
      *
      * @param string $column
-     * @param  string|null  $key
+     * @param string|null $key
      * @return \Illuminate\Support\Collection
      */
     public function pluck(string $column, $key = null): Collection
@@ -992,23 +996,42 @@ class Builder
         return $this->pluck($column)->implode($glue);
     }
 
-    public function refresh(bool $refresh=true): Builder
+    public function refresh(bool $refresh = true): Builder
     {
         $this->refresh = $refresh;
 
         return $this;
     }
 
-    public function logEnable(bool $enable=true): Builder
+    public function logEnable(bool $enable = true): Builder
     {
         $this->logEnable = $enable;
 
         return $this;
     }
 
-    public function realTotal($hits=true)
+    public function realTotal($hits = true)
     {
         $this->realTotal = $hits;
+
+        return $this;
+    }
+
+    public function highlight(array $fields, array $options)
+    {
+        $config = $this->connection->getConfig('highlight');
+        $pre_tags = $post_tags = [];
+        foreach ($config['tags'] as $tag) {
+            $ret = preg_match('/(<.*?>)(<\/.*>)/', $tag, $matches);
+            if ( ! $ret) {
+                continue;
+            }
+            $pre_tags[] = $matches[1];
+            $post_tags[] = $matches[2];
+        }
+        $this->highlight = array_filter(
+            array_merge(compact('pre_tags', 'post_tags', 'fields'), $options)
+        );
 
         return $this;
     }
@@ -1216,5 +1239,10 @@ class Builder
         $this->offset = null;
         $this->columns = [];
         return $this;
+    }
+
+    public function getConnection(): ConnectionInterface
+    {
+        return $this->connection;
     }
 }

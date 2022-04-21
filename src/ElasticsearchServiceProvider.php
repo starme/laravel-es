@@ -2,7 +2,6 @@
 namespace Starme\LaravelEs;
 
 use Illuminate\Support\ServiceProvider;
-use Starme\LaravelEs\Eloquent\Model;
 
 class ElasticsearchServiceProvider extends ServiceProvider
 {
@@ -17,8 +16,10 @@ class ElasticsearchServiceProvider extends ServiceProvider
         $this->publishes([
             __DIR__ . '/config/es.php' => config_path('es.php'),
         ], 'es-config');
-        
-        Model::setConnectionResolver($this->app['es']);
+
+        Eloquent\Model::setConnectionResolver($this->app['es']);
+
+        Eloquent\Eloquent::setConnectionResolver($this->app['es']);
 
 //        Model::setEventDispatcher($this->app['events']);
     }

@@ -179,7 +179,9 @@ class ConnectionResolver implements ConnectionResolverInterface
             throw new InvalidArgumentException("Database connection [{$name}] not configured.");
         }
 
-        return $config;
+        return array_merge(
+            $config, Arr::except($this->app['config']['es'], ['default', 'connections']), compact('name')
+        );
     }
 
     /**

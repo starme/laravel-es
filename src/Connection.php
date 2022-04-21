@@ -226,7 +226,7 @@ class Connection implements ConnectionInterface
     public function bulk($params, $logEnable=true)
     {
         $this->loggingQueries = $logEnable;
-        
+
         return $this->run('bulk', $params);
     }
 
@@ -589,6 +589,11 @@ class Connection implements ConnectionInterface
     public function logging(): bool
     {
         return $this->loggingQueries;
+    }
+
+    public function getName(): string
+    {
+        return $this->config['name'];
     }
 
     public function setClient($client)
