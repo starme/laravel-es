@@ -43,6 +43,25 @@ trait Warp
     }
 
     /**
+     * Convert an array of column names into a delimited string.
+     *
+     * @param array $columns
+     * @param bool $build_script
+     * @return array
+     */
+    public function columnize(array $columns, $build_script=true): array
+    {
+        $id = $columns['id'] ?? "";
+
+        if (! $build_script) {
+            $body['script'] = $this->compileScript($columns);
+        } else {
+            $body = array_map([$this, 'wrap'], $columns);
+        }
+        return compact('id', 'body');
+    }
+
+    /**
      * Wrap a table in keyword identifiers.
      *
      * @param string $table

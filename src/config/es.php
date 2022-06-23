@@ -36,9 +36,8 @@ return [
                 ]
             ],
             // Elasticsearch handlers
-            // 'handler' => new MyCustomHandler(),
             'logger' => env('ELASTIC_LOGGER', ''),
-            'prefix' => env('ELASTIC_PREFIX', 'kpi_')
+            'prefix' => env('ELASTIC_PREFIX', '')
         ]
     ]
 

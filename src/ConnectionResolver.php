@@ -25,6 +25,13 @@ class ConnectionResolver implements ConnectionResolverInterface
     protected $default = 'default';
 
     /**
+     * The reconnector instance for the connection.
+     *
+     * @var callable
+     */
+    protected $reconnector;
+
+    /**
      * Create a new connection resolver instance.
      *
      * @param $app
@@ -33,6 +40,10 @@ class ConnectionResolver implements ConnectionResolverInterface
     public function __construct($app)
     {
         $this->app = $app;
+
+        $this->reconnector = function ($connection) {
+            $this->reconnect($connection->getName());
+        };
     }
 
     /**
@@ -155,7 +166,7 @@ class ConnectionResolver implements ConnectionResolverInterface
             $config,
             $this->app['log']->channel($config['logger'])
         );
-        return $connection->setEvents($this->app['events']);
+        return $connection->setEvents($this->app['events'])->setReconnector($this->reconnector);
     }
 
     /**
