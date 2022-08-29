@@ -82,13 +82,12 @@ trait AggregationGrammar
     protected function compileSimpleAgg($type, $columns): array
     {
         foreach ($columns as $column) {
-            $attrs = ['field' => $column];
+            $attrs = ['field' => $column, 'size' => 100000];
             if (is_array($column)) {
-                $attrs = $column;
-                $column = $column['field'];
+                $attrs = array_merge($attrs, $column);
             }
-            
-            [$column, $alias] = $this->wrap($column, $this->defaultAggAlias($type, $column));
+
+            [$column, $alias] = $this->wrap($attrs['field'], $this->defaultAggAlias($type, $attrs['field']));
             $aggs[$alias][$type] = $attrs;
         }
         return $aggs;
