@@ -2,6 +2,7 @@
 namespace Starme\LaravelEs\Query\Grammars;
 
 use Starme\LaravelEs\Query\Builder;
+use Starme\LaravelEs\Exceptions\ParamsExcption;
 
 trait AggregationGrammar
 {
@@ -82,9 +83,17 @@ trait AggregationGrammar
     protected function compileSimpleAgg($type, $columns): array
     {
         foreach ($columns as $column) {
-            $attrs = ['field' => $column, 'size' => 100000];
+            $attrs = ['size' => 100000];
+            if (is_string($column)) {
+                $attrs['field'] = $column;
+            }
             if (is_array($column)) {
                 $attrs = array_merge($attrs, $column);
+            }
+
+            if( ! isset($attrs['field'])) {
+                throw new ParamsExcption('params not [field] attribute.');
+                
             }
 
             [$column, $alias] = $this->wrap($attrs['field'], $this->defaultAggAlias($type, $attrs['field']));
